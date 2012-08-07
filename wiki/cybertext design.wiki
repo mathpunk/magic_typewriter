@@ -1,0 +1,399 @@
+example page: [[systematizing]]
+
+= Tasks =
+[x]  Ubuntu 12
+[ ]  screen 
+[ ]  dev.twitter.com/apps/new
+[ ]  evernote API key (double checking it)
+[ ]  Bring Python/Ruby books
+[ ]  Read a little on Coffeescript/Javascript
+[ ]  Evernote download from Windows
+[ ]  Solve as many problems as possible with regex
+[ ]  Go through items, tagging with POV/Subject and Topic
+
+= Cybertext =
+= Cybertext: Content, Form, and Process =
+
+We've gotten used to the idea that *form* can be separated from *content*, such as
+with latex preambles and css/sass documents. As I've been writing, I've also ben
+separating out *process* from my content; I keep a journal, I keep a notes
+document, and these are things that I can work on and think about in my book
+without committing to putting in the book. 
+
+But what if we had a third component, *procedure*?  Algorithmic (or procedural)
+text that has x properties and uses resource y and goes to position z in
+scripton w. Procedure might interact with form: pulling tagged images from your
+private cache or from Flickr, or writing certain textons in ransom- or
+Dada-style text. Or it could interact with content: dropping search results at
+the end of an article; making textons more "demanding" (see below) when a Google
+Alert goes off; marking the beats in a card stack; creating badges out of
+"exercise"-formatted text; creating a list of non-dictionary words used;
+attracting other documents with a particular word in them; changing permissions
+on textons, so that they are readable by the World, or the Buyer, or the Team,
+or the Author alone. 
+= Ideas =
+
+= Elements =
+
+== Textons ==
+
+== Explicit Textons ==
+
+If I type three lines and rip the page out of my typewriter, I'm deciding that,
+hey, these three lines are a thing.  If I tape two pages together end-to-end, I
+want these to be considered a single unit. 
+
+Whether I'm cutting or gluing, I'm making an explicit decision about whether
+this texton is a block or not. Although, thanks to magic, there remain etheric
+relations to other textons ("I'm from texton x", "I sample texton y"). 
+
+
+== Passive Textons ==
+
+Any texton has subtextons: subsets and subsequences of the textons. Most
+probably we'd be thinking of words, phrases, sentences, or paragraphs. In a
+large texton, there might be some explicit structure too: sections or chapters. 
+
+
+== Demanding Textons ==
+The Faceknife aspect of the Magic Typewriter helpfully presents you with things
+that it thinks you really ought to work on because, c'mon, people are waiting. 
+
+# Made-up words demand explanations: if they do not have their own texton, or
+  appear in some glossary, they get demanding. However, if you have decided to
+  explain them implicitly, through context and exformation, the typewriter will
+  remember that decision. 
+# A page that is linked to a lot of times is more demanding than a page that is
+  never or rarely linked to.
+# Short (or empty) pages are demanding. If it's just an idea, why does it have
+  its own explicit texton? 
+# Very long pages are also demanding: if a growing page is not incubated, it
+  becomes noisy and wants to be fed. 
+# Explicit assignments (to either the author, or to the typewriter) are
+  demanding, but not very demanding. They are likely to come up when you examine
+  a scripton that they deem as being related to themselves "somehow." 
+# Wait, should we just think of "assignments" as being to <<the author>> or
+  {{the typewriter}}? What if you have a presentation design, which wants to go
+  to the designer? Well, I'm not designing -- so a typewriter which emails the
+  designer would be the best magic solution. 
+# Journal entries are not very demanding at all. 
+
+
+== Engaging Textons ==
+
+Someone I was talking with somewhere, maybe with Liene?, mentioned something
+that was so interesting I would put it in [[concepts of the internet]].
+Basically, if an API would be nice to have, write up its specifications, and it
+may just happen. There are things that make it more likely to just happen: being
+promoted, being interesting, having fans. 
+
+I am imagining two ways of using Engaging Textons: the Open-Source model, and
+the No-Failure model. 
+
+In the open source model, We add things that would be nice to have --
+programmatic text, a css model, hypercards, a proof that P=NP -- and route that
+to a place where contributions are welcome, and will get ripped into little
+pieces by experts. Github, where bad code will be replaced with good code.
+Mathoverflow or other communities, where bad behavior will be trolled and
+moderated. 
+
+Drive traffic to other places, and traffic shall be driven back to you. 
+
+In the No-Failure model, we ask for submissions with a texton, and we use
+those submissions as textons-with-citation. What will they do when they are in
+the system? Who can say? What's a little injection attack among friends? 
+
+== Sentient Textons ==
+
+For a long time I was toying with creating two fake bots to do some of my
+textual and engagment bidding. However, so many really good fake bots showed up
+that "having a fake bot" was no longer enough to be a joke. But, if they can be
+a joke *and* an element of the cybertext, they may survive editing. (They
+*really* want to survive editing.)
+
+"Submission" is the bot that handles No-Fail Textons, i.e., the submitted
+content for missions.  Submission is stoked that you're becoming a better
+person, and please don't worry about your demographic and psychological data
+being used to create collateralized debt obligations on your family members. 
+
+Subversion is a fake bot which handles discussion- and code-based missions,
+using the [[concepts of the internet]] to make the cybertext better. If you
+would like to make the cybertext better enough to perform infrastructure attacks
+and develop plasma cannons, please submit a patch. 
+
+NB: As a sequence of tweets (or really, engagement requests on any platform), it
+probably makes more sense to think of these guys as scriptons. But, while they
+are unready to launch yet have the potential to get some lines written for them,
+punctuation quirks developed, or Markov corpi assembled, they are technically
+textons. 
+
+
+== Scriptons ==
+A scripton is some arrangement of textons. For the moment, let's assume that we
+don't want to repeat ourselves, but we certainly might want to limit ourselves,
+and so the sorts of arrangements we'll consider are permutations of subsets of
+our corpus. 
+
+A few examples:
+  Fundamental queue. 
+  The actual order in which you did things.
+
+  Digraph view.
+  Creating a post-tree structure, either automatically, or in response to queries.
+
+  Placement view.
+  A pure version of Nathan's original notion: that one should be able to put
+  'piles' of 'pages' in different 'places', with colors and transparancy and
+  labels and whatever other image-processes are helpful.
+
+  Linearized view.
+  The digraph tries to flatten itself, based on the user's command and ordering.
+
+  Procrustean view.
+  Generates tables to fill out of /^words/: (1)/. Choose the row and column. Have
+  I been here before? THen print that one. 
+
+
+== Permutation spaces and change of basis ==
+
+If my backers came over to my house tomorrow, with knives, I'd be happy to
+accompany them to the print shop, buy paper, and print them out copies of the
+book as it is. Since it's not rewritten into its unique, final, and "let me tell
+you, it would have been perfect if only" form, I'd have to ask myself, What
+ordering should I give it to them in? By file modification or creation date? By
+title, alphabetically. By decreasing word count? 
+
+A scripton is some choice of a subset of textons, and an ordering of that,
+right? That got me thinking about whether permutation spaces have some notion of
+a "change of basis." Permutation space admits topologies other than the discrete
+topology, right? But whether it's useful to think of it in change of basis terms
+is not clear. 
+
+At any rate, here's what came from fantasizing about permutation spaces:
+
+# You might define sequences that do not permute; they move as a block. I think
+  we used to call these, blocks of imprimitivity -- I'll have to check out my
+  algebraic graph theory book to see if it suggests anything. 
+# You can order by any of a number of date objects. 
+# You can order by the results of a proc; for example, pass in a proc which counts
+  the number of swear words, and order by dirtiness. 
+# You can make orderings out of directed graphs, if you do some sort of nesting
+  operation, and if you don't expect it to work globally. They may not be unique
+  orderings. 
+# I had this wild idea... where you, say, order by... how in demand the texton is
+  by other pages? Like, if I keep talking about [[wtf maps]], which is my
+  canonical example of a document that I keep bringing up without reall explaining
+  what I mean by it... if a LOT of pages use it, then it should be at the top of
+  an assignment queue of that kind. I.e., it's a page that is much loved by the
+  cybertext, so please show it some rewriting love. 
+
+= How to Steal =
+
+I am presented with a 'copy' file, which means that I have typed in some stolen
+text from somewhere. I highlight some of it; I yank it to a new texton; I react,
+I comment, I tag -- I write! When I am satisfied, it goes away.
+
+What does it look like? A visual selection that gets yanked upward to a new vim
+window, for editing, annotating, destroying, splitting apart. 
+
+What is recorded? My own original thoughts; my notion of what it is connected to
+in the larger work of which it is a part; the text that I was inspired by, and
+its citation information.
+
+= How to interact with the "research queue" =
+
+== Search Results ==
+
+If our textons know about embedded ruby, then as I'm writing along, I might want
+to see the latest 
+
+== Dipping in to research ==
+
+I'm happily typing away on whatever. A thought occurs to me, such as:
+
+  "Hey, there was that article on, like, how being smarter makes you stupider,
+thanks to cognitive bias and pattern recognition. I know I saved that somewhere;
+I know that @s7ephen linked to it; I know I haven't really done anything with
+it before. 
+
+So I
+
+<% get {'from':'s7ephen', 'has':'smart stupid'} %>
+
+and the note is inserted (if it is a singleton set) or a selection of notes
+appear to choose among. Chances are, it's a tweet size of text. Given what I've
+got now, it probably has some useless text like "Sent via Seesmic" that I don't
+really want to see. And knowing me, chances are good I saved it a couple of times,
+and this would be a good time to let the machine know that that set is really
+meant to only be one note, so I'd get rid of the extras, for neatness. (This
+might be suggested already by the typewriter, since it has expanded the bit.ly
+link and noticed that this page has been saved more than once.)
+
+What happens next? The tweet itself might have a texton worth transforming, some
+original text I want to create and remember that there's a citation there...
+okay, done. It probably has a link, too... I'll want to examine the referred
+page, yank out some textons (with their citation information, naturally), and
+perhaps transform those. 
+
+Whatever I was writing has been transformed; I might also want to add some
+metadata to that research texton while I have it open, a tag or two. Since the
+research texton has been examined, I won't want it to appear in my...
+
+== Unexamined Queue ==
+
+If I'm not writing anything in particular, I might want to examine whatever is
+in the big ass queue of things I saved while browsing. So I 
+
+:call examine 
+
+and a texton I've never examined pops up. Hm. For this one I want to start the
+beginning of a new piece. Something a lot like the previous example happens...
+and, I'm done. Next!
+
+:call examine
+
+Oh, right... This is for the 'ratios' chapter/piece/texton/whatever. I will tag
+it as such. Don't remind me of this until I'm working on a 'ratios' piece.
+
+== Saved Search, or a Search What Updates ==
+
+Say I've got a piece which is an expository piece about, I dunno, networks. It
+is very general, and it could be nice to send the reader off to browse examples
+if they which. So at the point that I'm about to transition into a new thought,
+I'll put in a 
+
+<%= search {'tag':'networks'} %>
+
+When this scripton is read, it brings up a little list of things you might want
+to look at. Perhaps it's got a little bit of css styling, giving it a little
+blockquoted "See also:" pizazz.  
+
+Come to think of it, what if I want to do the same, but not necessarily for
+notes I already have? Vi Hart's Youtube channel is a known place of awesomeness.
+Perhaps
+
+<%= web.search "vi hart graphs" %>
+
+which, if nil, does nothing. 
+
+
+= Typing =
+
+== patterns file ==
+Perhaps this would all be factored into some sort of patterns file, so that you
+can review a cheat sheet of the punctuation and commands you want to remember to
+use. 
+
+<<(x)>> -> 
+---     -> ---
+and so on
+
+== Usage ==
+
+=== [[]] ===
+For sending text into a different, related context.
+
+=== (()) ===
+For sending text into an invisible context. 
+
+== <<>> ==
+These have been for creating assignments. Perhaps, then, it's...
+
+== {{}} ==
+...that are for magic. Although, this all leads toward invisible, related,
+assigned, magic lines of text. 
+
+== <<unassigned>> ==
+It would also be useful to be able to open pages to the "main context", which
+ought should be your personal wiki. I haven't even been using that thing,
+because I never get out of the project context of the book. Wait, is this really
+a hole we want made? Perhaps you can "send" content to the main context. 
+
+
+
+= Implementation = 
+== Are string methods a way to go? ==
+
+When a texton has more methods than String, it wants to do them. 
+
+class Magicstring < String
+  def antsy
+  # Do I have methods not defined in my superclass?
+  end
+end
+
+=== Yeah but how do you read them? ===
+
+<<cool string bro>>.method("arguments")
+
+<<(\s?(.*)\s?)>>.(method)\((arguments)\)/)
+string = $1
+method_name = $2
+arguments = $3
+
+=== Open/Create new page, with "title". ===
+
+<<"cool i'm a page">>.open
+
+Currently, \[\[cool i'm a page\]\] is what does it. It's a nice shortcut. And
+implemented in the wiki filetype already. 
+
+
+
+= Hooking =
+
+Currently, we take a diff after saving. Can vim watch for much finer events, such as
+"Close a double-bracket"? Can we program in "the full wolfram"? I suppose we can
+always compare time stamps of events, right? So what did he use to track all the
+things?
+
+= Database =
+Install Mongo gems. 
+
+= Trackers =
+
+== Reading == 
+Created a page. 
+Created a page that became nonempty.
+Followed a page. 
+Transformed a page. 
+Backed out of a page without changing it. 
+
+== Writing and Links ==
+Magic text        # {{the word}}.method_call(arguments)
+Journal text      # (())
+Assignment text   # <<>>
+Link text         # [[]]
+Uplinked text     # the header, or -> ...I like it. 
+Cybertext         # procedural results from magic words and the header
+
+Ideas:
+  parents with ->
+  jumps with <-
+  children with [[]]
+
+
+= Semantic morphogenetics =
+
+== Array Tricks ==
+
+Merge textons into a rewrite
+Use arrays to permute or cycle through text
+Combine lengths of arrays to build "blocks of imprimitivity" that do not shuffle
+"Orbitals of text."
+Take arrays of words and apply physics. 
+
+
+
+= Visualization =
+
+== sparkline of x's ==
+quantifying: I'd like to be able to follow a line with x's, to denote that I have done the
+thing, and I should be awarded points. self-gamification. 
+
+What if it looked for words that were not in the dictionary as hooks to
+question you on. 
+
+= Research =
+[[inspirations]]
+
