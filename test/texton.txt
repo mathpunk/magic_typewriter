@@ -1,0 +1,3 @@
+The magic words are {{please}} and {{thank you}}.
+I'm having ((thoughts)) and ((feelings)).
+Read these [[documents]] and [[pages]].
