@@ -1,6 +1,6 @@
 # Textons created by opening up String. Why not? Many reasons. 
 
-class String
+class Texton < String
 
   rubble = {magic: /{{(.*?)}}/m, journal: /\(\((.*?)\)\)/m, pages: /\[\[(.*?)\]\]/m }
 
