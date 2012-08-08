@@ -1,3 +1,11 @@
+= Vim behaving badly =
+
+== Buffers == 
 Buffers aren't working like I'd expect -- I tried to move some text using "a and
 "A and in buffer 'a' was crap from many days ago. 
 
+The clipboard buffer is not working like I'd expect-- I used to be able to "+p
+and paste from the clipboard. 
+
+There is a save problem that I haven't seen in a while, but it's alarming when
+it does happen. 

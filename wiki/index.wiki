@@ -4,7 +4,6 @@
 [[mongo tutorials]]
 [[no longer no sense of an ending]]
 [[old weird ideas]]
-[[Sloanstacks]]
+[[stacks]]
 [[vim errors]]
 [[wiki behavior]]
-
