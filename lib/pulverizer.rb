@@ -6,15 +6,24 @@ class String
   journal_pattern = /\(\((.*)\)\)/m
 
   def magic
-    magic_pattern = /{{(.*)}}/m
+    magic_pattern = /{{(.*?)}}/m
     self =~ magic_pattern
     [$1]
   end
 
   def pages
+    page_pattern = /\[\[(.*)\]\]/m
+    self =~ page_pattern
+    [$1]
   end
 
   def journal
+    journal_pattern = /\(\((.*)\)\)/m
+    self =~ journal_pattern
+    [$1]
+  end
+
+  def double_bracket(pattern)
   end
 
 end

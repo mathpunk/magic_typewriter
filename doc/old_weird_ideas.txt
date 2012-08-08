@@ -1,0 +1,83 @@
+Returns units of text short enough to tweet.
+tweetable = lambda {|text| if text.length <= 140 then text}
+
+# Returns units of text that would make for a sensible punk zine collage.
+three_blocks = lambda {|text| if text.word_length < 300 then text}
+
+class String
+  def word_length
+
+    # Construct the regex for /[not a space character] [not a space character]/.
+    regex = //
+    # Count the matches. Add one.
+    count = 1
+    # Consider it good enough.
+    return count
+
+  end
+end
+
+# Writes titles, a bit of text, and topics, for every unit of the book. 
+# Equivalent to edition.summary
+summary = lambda {|obj| %{        
+    \n
+    #{obj.metadata['title'] || "Untitled"}
+    ==================================
+    #{obj.text[0, 70]+"..."}
+    --------------------------------------------------- 
+    topics: #{obj.metadata['topics'] || "Undetermined"}
+  }}
+=begin
+
+MORPHISMS OF CUTUP
+
+input_tracks
+  Take files or text as arguments.
+
+track_settings 
+  snip_size = determines how many consecutive words will be included in each
+  cut. 
+  
+  probability_fader  = increases or decreases the probability that random picks
+  will be made from the relevant track (when weighed against the probability
+  settings for all of the other active tracks).
+
+mix
+  Words (or word clusters in cases where snip size is greater than 1)
+  are randomly drawn and inserted into the output text.
+     
+sequential_mix
+  The sequential process draws words or sentence fragments from tracks 1 to 4 in
+  sequence (ignoring the probability fader positions). 
+
+morph
+  Slightly skews the meaning of text by replacing each word with a randomly
+  selected synonym (a word which means the same thing or at least something
+  similar).
+
+Fonts
+  For display purposes only. But oh, wouldn't it be lovely to have ransom style
+  font-and-image text display?
+
+Markov
+  Record the frequency of a third word given two words, by analyzing text, and
+  use this to produce new text.
+
+Oblique
+  A digital analogue of cutting a physical book into columns. Skip ahead n
+  words, then move forward m words. The effect is a diagonal of the text. This
+  might be interspersed with equivalent diagonals of the other text resulting in
+  a braiding effect. 
+
+Categorical. 
+  Source material comes from files having a particular tag, or responding to a
+  particular search term. This term might search topics, or it might search text
+  for some regular expression. (Results may improve as my spelling and editing
+  gets improved.) 
+
+=end
+
+# Book methods are intended to take blocks that filter and modify
+# the text objects they are given. Here are some blocks that seem useful.
+# Perhaps they should live in a :name => block associative array?
+
