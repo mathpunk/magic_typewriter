@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby 
+
+file = ARGV[0]
+show = ARGV[1].to_i
+
+counts = Hash.new(0)
+File.open(file) do |f|
+  while line = f.gets do
+    counts[line.chomp]+=1
+  end
+end
+
+counts = counts.sort_by {|word, count| count}
+counts.last(show).each { |word, count| puts "#{word},#{count}" }
