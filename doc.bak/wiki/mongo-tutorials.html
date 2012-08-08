@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>File: mongo-tutorials [RDoc Documentation]</title>
+
+  <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet" />
+
+  <script src="../js/jquery.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript"
+    charset="utf-8"></script>
+</head>
+
+<body class="file">
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="../MDBKoans/MIT-LICENSE.html">MIT-LICENSE</a></li>
+        
+          <li class="file"><a href="../MDBKoans/README_rdoc.html">README.rdoc</a></li>
+        
+          <li class="file"><a href="../MDBKoans/Rakefile.html">Rakefile</a></li>
+        
+          <li class="file"><a href="../lib/evernote.html">evernote</a></li>
+        
+          <li class="file"><a href="../ruby-libnotify-0_3_3/AUTHORS.html">AUTHORS</a></li>
+        
+          <li class="file"><a href="../ruby-libnotify-0_3_3/COPYING.html">COPYING</a></li>
+        
+          <li class="file"><a href="../ruby-libnotify-0_3_3/ChangeLog.html">ChangeLog</a></li>
+        
+          <li class="file"><a href="../ruby-libnotify-0_3_3/INSTALL.html">INSTALL</a></li>
+        
+          <li class="file"><a href="../ruby-libnotify-0_3_3/README.html">README</a></li>
+        
+          <li class="file"><a href="../spec/assertions_txt.html">assertions.txt</a></li>
+        
+          <li class="file"><a href="../wiki/mongo-tutorials.html">mongo-tutorials</a></li>
+        
+          <li class="file"><a href="../wiki/wiki_behavior_txt.html">wiki_behavior.txt</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../EdgeCase.html">EdgeCase</a></li>
+        
+          <li><a href="../EdgeCase/Koan.html">EdgeCase::Koan</a></li>
+        
+          <li><a href="../EdgeCase/Sensei.html">EdgeCase::Sensei</a></li>
+        
+          <li><a href="../Notify.html">Notify</a></li>
+        
+          <li><a href="../Notify/Notification.html">Notify::Notification</a></li>
+        
+          <li><a href="../AboutAsserts.html">AboutAsserts</a></li>
+        
+          <li><a href="../AboutCRUD.html">AboutCRUD</a></li>
+        
+          <li><a href="../AboutDBConnect.html">AboutDBConnect</a></li>
+        
+          <li><a href="../AboutDataTypes.html">AboutDataTypes</a></li>
+        
+          <li><a href="../AboutEmbeddedDocuments.html">AboutEmbeddedDocuments</a></li>
+        
+          <li><a href="../AboutGroups.html">AboutGroups</a></li>
+        
+          <li><a href="../AboutMapReduce.html">AboutMapReduce</a></li>
+        
+          <li><a href="../AboutQueries.html">AboutQueries</a></li>
+        
+          <li><a href="../AboutQueryConditions.html">AboutQueryConditions</a></li>
+        
+          <li><a href="../AboutQueryOptions.html">AboutQueryOptions</a></li>
+        
+          <li><a href="../AboutUpdates.html">AboutUpdates</a></li>
+        
+          <li><a href="../FillMeInError.html">FillMeInError</a></li>
+        
+          <li><a href="../Object.html">Object</a></li>
+        
+          <li><a href="../TestPulverizer.html">TestPulverizer</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    
+<p>Configure MongoDB</p>
+
+<p>These packages configure MongoDB using the /etc/mongodb.conf file in
+conjunction with the control script. For Upstart-based systems, find the
+control script is at /etc/init/mongodb.conf. For all other systems you can
+find the control script at /etc/init.d/mongodb.</p>
+
+<p>This MongoDB instance will store its data files in the /var/lib/mongodb and
+its log files in /var/log/mongodb, and run using the mongodb user account.</p>
+
+<p>Note</p>
+
+<p>If you change the user that runs the MongoDB process, you will need to
+modify the access control rights to the /var/lib/mongodb and
+/var/log/mongodb directories. Controlling MongoDB Starting MongoDB</p>
+
+<p>Upstart users can start the mongod process by issuing the following
+command:</p>
+
+<p>sudo service mongodb start</p>
+
+<p>All other users can issue the following command to start mongod:</p>
+
+<p>sudo /etc/init.d/mongodb start</p>
+
+<p>You can verify that mongod has started successfully by checking the
+contents of the log file at /var/log/mongodb/mongodb.log. Stopping MongoDB</p>
+
+<p>Upstart users can stop the mongod process by issuing the following command:</p>
+
+<p>sudo service mongodb stop</p>
+
+<p>All other users can issue the following command to stop mongod:</p>
+
+<p>sudo /etc/init.d/mongodb stop</p>
+
+<p>Restarting MongoDB</p>
+
+<p>Upstart users can restart the mongod process by issuing the following
+command:</p>
+
+<p>sudo service mongodb restart</p>
+
+<p>All other users can issue the following command to restart mongod:</p>
+
+<p>sudo /etc/init.d/mongodb restart</p>
+
+<p>Controlling mongos</p>
+
+<p>As of the current release, there are no control scripts for mongos. mongos
+is only used in sharding deployments and typically do not run on the same
+systems where mongod runs. You can use the mongodb script referenced above
+to derive your own mongos control script. Using MongoDB</p>
+
+<p>Among the tools included with the MongoDB package, is the mongo shell. You
+can connect to your MongoDB instance by issuing the following command at
+the system prompt:</p>
+
+<p>mongo</p>
+
+<p>This will connect to the database running on the localhost interface by
+default. At the mongo prompt, issue the following two commands to insert a
+record in the “test” collection of the (default) “test” database.</p>
+
+<p>&gt; db.test.save( { a: 1 } ) &gt; db.test.find()</p>
+
+<p>irb</p>
+
+<p>As you execute commands, irb will output the result using the inspect
+method. If you are editing and running a script for this tutorial, you can
+view output using the puts or p methods. Using the gem</p>
+
+<p>Use the mongo gem via the require kernel method.</p>
+
+<p>require ‘rubygems’  # not necessary for Ruby 1.9 require ‘mongo’</p>
+
+<p>Making a Connection</p>
+
+<p>An Mongo::Connection instance represents a connection to MongoDB. You can
+optionally specify the MongoDB server address and port when connecting. The
+following example shows three ways to connect to the local machine:</p>
+
+<p>connection = Mongo::Connection.new # (optional host/port args) connection =
+Mongo::Connection.new(“localhost”) connection =
+Mongo::Connection.new(“localhost”, 27017)</p>
+
+<p>Listing All Databases</p>
+
+<p>connection.database_names connection.database_info.each { |info| puts
+info.inspect }</p>
+
+<p>The database_info method returns a hash mapping database names to the size
+of the database in bytes. Using a Database</p>
+
+<p>You use a Connection instance to obtain an Mongo::DB instance, which
+represents a named database. The database doesn’t have to exist - if it
+doesn’t, MongoDB will create it for you. The following examples use the
+database “mydb”:</p>
+
+<p>db = connection.db(“mydb”) db = Mongo::Connection.new.db(“mydb”)</p>
+
+<p>At this point, the db object will be a connection to a MongoDB server for
+the specified database. Each DB instance uses a separate socket connection
+to the server.</p>
+
+<p>If you’re trying to connect to a replica set, see Replica Sets in Ruby.
+Authentication</p>
+
+<p>MongoDB can be run in a secure mode where access to databases is controlled
+through name and password authentication. When run in this mode, any client
+application must provide a name and password before doing any operations.
+In the Ruby driver, you simply do the following with the connected mongo
+object:</p>
+
+<p>auth = db.authenticate(my_user_name, my_password)</p>
+
+<p>If the name and password are valid for the database, auth will be true.
+Otherwise, it will be false. You should look at the MongoDB log for further
+information if available. Using a Collection</p>
+
+<p>You can get a collection to use using the collection method:</p>
+
+<p>coll = db.collection(“testCollection”)</p>
+
+<p>This is aliased to the [] method:</p>
+
+<p>coll = <a href="http://"testCollection"">db</a></p>
+
+<p>Once you have this collection object, you can now do create, read, update,
+and delete (CRUD) functions on persistent storage. Creating Documents with
+insert</p>
+
+<p>Once you have the collection object, you can create or insert documents
+into the collection. For example, lets make a little document that in JSON
+would be represented as</p>
+
+<pre>{
+   &quot;name&quot; : &quot;MongoDB&quot;,
+   &quot;type&quot; : &quot;database&quot;,
+   &quot;count&quot; : 1,
+   &quot;info&quot; : {
+               x : 203,
+               y : 102
+             }
+}</pre>
+
+<p>Notice that the above has an “inner” document embedded within it. To do
+this, we can use a Hash or the driver’s OrderedHash (which preserves key
+order) to create the document (including the inner document), and then just
+simply insert it into the collection using the insert method.</p>
+
+<p>doc = {“name” =&gt; “MongoDB”, “type” =&gt; “database”, “count” =&gt; 1,
+“info” =&gt; {“x”</p>
+
+<h1>&gt; 203, “y” =&gt; ‘102’}}</h1>
+
+<p>id = coll.insert(doc)</p>
+
+<p>We have saved the id for future use below. Now the collection has been
+created and you can list it. Getting a List Of Collections</p>
+
+<p>Each database has zero or more collections. You can retrieve a list of them
+from the db (and print out any that are there):</p>
+
+<p>db.collection_names</p>
+
+<p>You should see</p>
+
+<p>[“testCollection”, “system.indexes”]</p>
+
+<p>Adding Multiple Documents</p>
+
+<p>To demonstrate some more interesting queries, let’s add multiple simple
+documents to the collection. These documents will have the following form:</p>
+
+<p>{</p>
+
+<pre>&quot;i&quot; : value</pre>
+
+<p>}</p>
+
+<p>Here’s how to insert them:</p>
+
+<p>100.times { |i| coll.insert(“i” =&gt; i) }</p>
+
+<p>Notice that we can insert documents of different “shapes” into the same
+collection. These records are in the same collection as the complex record
+we inserted above. This aspect is what we mean when we say that MongoDB is
+“schema-free”. Reading Documents with find_one and find Reading the First
+Document in a Collection using find_one</p>
+
+<p>To retrieve the document that we inserted, we can do a simple find_one
+method to get the first document in the collection. This method returns a
+single document directly.</p>
+
+<p>coll.find_one</p>
+
+<p>and you should something like:</p>
+
+<p>{“_id”=&gt;BSON::ObjectId(‘4f7b1ea6e4d30b35c9000001’),
+“name”=&gt;“MongoDB”, “type”=&gt;“database”, “count”=&gt;1,
+“info”=&gt;{“x”=&gt;203, “y”=&gt;“102”}}</p>
+
+<p>Note the _id element has been added automatically by MongoDB to your
+document. Reading All of the Documents with a Cursor using find</p>
+
+<p>To get all the documents from the collection, we use the find method. find
+returns a Cursor object, which allows us to iterate over the set of
+documents that matches our query. The Ruby driver’s Cursor implemented
+Enumerable, which allows us to use Enumerable#each, `Enumerable#map}, etc.
+For instance:</p>
+
+<p>coll.find.each { |row| puts row.inspect }</p>
+
+<p>and that should print all 101 documents in the collection. You can take
+advantage of Enumerable#to_a.</p>
+
+<p>puts coll.find.to_a</p>
+
+<p>Important note - using to_a pulls all of the full result set into memory
+and is inefficient if you can process by each individual document. To
+process with more memory efficiency, use the each method with a code block
+for the cursor. Specific Queries</p>
+
+<p>We can create a query hash to pass to the find method to get a subset of
+the documents in our collection. To check that our update worked, find the
+document by id:</p>
+
+<p>coll.find(“_id” =&gt; id).to_a</p>
+
+<p>If we wanted to find the document for which the value of the “i” field is
+71, we would do the following:</p>
+
+<p>coll.find(“i” =&gt; 71).to_a</p>
+
+<p>and it should just print just one document:</p>
+
+<p>{“_id”=&gt;BSON::ObjectId(‘4f7b20b4e4d30b35c9000049’), “i”=&gt;71}</p>
+
+<p>Sorting Documents in a Collection</p>
+
+<p>To sort documents, simply use the sort method. The method can either take a
+key or an array of [key, direction] pairs to sort by.</p>
+
+<p>Direction defaults to ascending order but can be specified as
+Mongo::ASCENDING, :ascending, or :asc whereas descending order can be
+specified with Mongo::DESCENDING, :descending, or :desc.</p>
+
+<p># Sort in ascending order by :i coll.find.sort(:i)</p>
+
+<p># Sort in descending order by :i coll.find.sort([:i, :desc])</p>
+
+<p>Counting Documents in a Collection</p>
+
+<p>Now that we’ve inserted 101 documents (the 100 we did in the loop, plus the
+first one), we can check to see if we have them all using the count method.</p>
+
+<p>coll.count</p>
+
+<p>and it should print 101. Getting a Set of Documents With a Query</p>
+
+<p>We can use the query to get a set of documents from our collection. For
+example, if we wanted to get all documents where “i” &gt; 50, we could
+write:</p>
+
+<p>puts coll.find(“i” =&gt; {“$gt” =&gt; 50}).to_a</p>
+
+<p>which should print the documents where i &gt; 50. We could also get a
+range, say 20 &lt; i &lt;= 30:</p>
+
+<p>puts coll.find(“i” =&gt; {“$gt” =&gt; 20, “$lte” =&gt; 30}).to_a</p>
+
+<p>Selecting a Subset of Fields for a Query</p>
+
+<p>Use the :fields option to specify fields to return.</p>
+
+<p>puts coll.find(“_id” =&gt; id, :fields =&gt; [“name”, “type”]).to_a</p>
+
+<p>Querying with Regular Expressions</p>
+
+<p>Regular expressions can be used to query MongoDB. To find all names that
+begin with ‘a’:</p>
+
+<p>puts coll.find({“name” =&gt; /^M/}).to_a</p>
+
+<p>You can also construct a regular expression dynamically. To match a given
+search string:</p>
+
+<p>params = {‘search’ =&gt; ‘DB’} search_string = <a
+href="http://'search'">params</a></p>
+
+<p># Constructor syntax puts coll.find({“name” =&gt;
+Regexp.new(search_string)}).to_a</p>
+
+<p># Literal syntax puts coll.find({“name” =&gt; /#{search_string}/}).to_a</p>
+
+<p>Although MongoDB isn’t vulnerable to anything like SQL-injection, it may be
+worth checking the search string for anything malicious. Updating Documents
+with update</p>
+
+<p>We can update the previous document using the update method. There are a
+couple ways to update a document. We can rewrite it:</p>
+
+<p><a href="http://"name"">doc</a> = "MongoDB Ruby" coll.update({"_id" =&gt;
+id}, doc)</p>
+
+<p>Or we can use an atomic operator to change a single value:</p>
+
+<p>coll.update({“_id” =&gt; id}, {“$set” =&gt; {“name” =&gt; “MongoDB Ruby”}})</p>
+
+<p>Verify the update.</p>
+
+<p>puts coll.find(“_id” =&gt; id).to_a</p>
+
+<p>Read [more about updating documents|Updating]. Deleting Documents with
+remove</p>
+
+<p>Use the remove method to delete documents.</p>
+
+<p>coll.count coll.remove(“i” =&gt; 71) coll.count puts coll.find(“i” =&gt;
+71).to_a</p>
+
+<p>The above shows that the count has been reduced and that the document can
+no longer be found.</p>
+
+<p>Without arguments, the remove method deletes all documents.</p>
+
+<p>coll.remove coll.count</p>
+
+<p>Please program carefully. Indexing Creating An Index</p>
+
+<p>MongoDB supports indexes, and they are very easy to add on a collection. To
+create an index, you specify an index name and an array of field names to
+be indexed, or a single field name. The following creates an ascending
+index on the “i” field:</p>
+
+<p># create_index assumes ascending order; see method docs # for details
+coll.create_index(“i”)</p>
+
+<p>To specify complex indexes or a descending index you need to use a slightly
+more complex syntax - the index specifier must be an Array of [field name,
+direction] pairs. Directions should be specified as Mongo::ASCENDING or
+Mongo::DESCENDING:</p>
+
+<p># Explicit “ascending” coll.create_index([[“i”, Mongo::ASCENDING]])</p>
+
+<p>Use the explain method on the cursor to show how MongoDB will run the
+query.</p>
+
+<p>coll.find(“_id” =&gt; id).explain coll.find(“i” =&gt; 71).explain
+coll.find(“type” =&gt; “database”).explain</p>
+
+<p>The above shows that the query by _id and i will use faster indexed
+BtreeCursor, while the query by type will use a slower BasicCursor. Getting
+a List of Indexes on a Collection</p>
+
+<p>You can get a list of the indexes on a collection.</p>
+
+<p>coll.index_information</p>
+
+<p>Creating and Querying on a Geospatial Index</p>
+
+<p>First, create the index on a field containing long-lat values:</p>
+
+<p>people.create_index([[“loc”, Mongo::GEO2D]])</p>
+
+<p>Then get a list of the twenty locations nearest to the point 50, 50:</p>
+
+<p>people.find({“loc” =&gt; {“$near” =&gt; [50, 50]}}, {:limit =&gt; 20}).each
+do |p|</p>
+
+<pre>puts p.inspect</pre>
+
+<p>end</p>
+
+<p>Dropping Drop an Index</p>
+
+<p>To drop a secondary index, use the drop_index method on the collection.</p>
+
+<p>coll.drop_index(“i_1”) coll.index_information</p>
+
+<p>The dropped index is no longer listed. Drop All Indexes</p>
+
+<p>To drop all secondary indexes, use the drop_indexes method on the
+collection.</p>
+
+<p>coll.drop_indexes coll.index_information</p>
+
+<p>Only the primary index “id” is listed. Drop a Collection</p>
+
+<p>To drop a collection, use the drop method on the collection.</p>
+
+<p>coll.drop db.collection_names</p>
+
+<p>The dropped collection is no longer listed. The drop_collection method can
+be used on the database as an alternative.</p>
+
+<p>db.drop_collection(“testCollection”)</p>
+
+<p>Drop a Database</p>
+
+<p>To drop a database, use the drop_database method on the connection.</p>
+
+<p>connection.drop_database(“mydb”) connection.database_names</p>
+
+<p>The dropped database is no longer listed.</p>
+
+  </div>
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+</body>
+</html>
+
