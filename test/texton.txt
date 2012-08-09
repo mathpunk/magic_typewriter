@@ -1,3 +1,14 @@
+<- an idea for an arrow
+-> another idea for an arrow
+
 The magic words are {{please}} and {{thank you}}.
 I'm having ((thoughts)) and ((feelings)).
 Read these [[documents]] and [[pages]].
+---
+that was a hard split, here comes a soft one:
+***
+and then ** for fun ** here are some juxtaposed ** ... ** wait for it... **
+textons!
+***
+You know, like Robin Sloan had **
+in his "Stacks" essay.
