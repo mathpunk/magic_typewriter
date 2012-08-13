@@ -1,5 +1,0 @@
-# Cycle through these types, after identifying the type that you expected
-types = ['wiki', 'rb', 'html'] 
-
-
-maintenance_types = ['sh', 'vim']
