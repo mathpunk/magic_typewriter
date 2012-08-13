@@ -19,4 +19,16 @@ class TestTexton < Test::Unit::TestCase
     assert_equal ["documents", "pages"], @texton.invoke_pages 
   end
 
+  def test_paragraphs
+    text = Texton.new("This is the first paragraph.
+
+This is the second.")
+    assert_equal ["This is the first paragraph." ,"This is the second."], text.paragraphs
+  end
+
+  def test_hashes
+    text = Texton.new("This has #hashtags in it, such as #foo and #bar.")
+    assert_equal ["hashtags", "foo", "bar"], text.hashes
+  end
 end
+

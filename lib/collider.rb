@@ -7,13 +7,19 @@ module Configuration
   COLLECTION = "snowdrift"
 end
 
-@conn = Mongo::Connection.new(Configuration::HOST, Configuration::PORT)
-@db   = @conn[Configuration::DATABASE]
-@coll = @db[Configuration::COLLECTION]
+class Collider
+  def initialize
+    @conn = Mongo::Connection.new(Configuration::HOST, Configuration::PORT)
+    @db   = @conn[Configuration::DATABASE]
+    @coll = @db[Configuration::COLLECTION]
+  end
 
-# Inserts a record. 
-@coll.insert({description: "ran collider.rb", time: Time.now})
+  def add_record(thing)
+    @coll.insert(thing)
+  end
 
-# Retrieves some things
-puts "There are #{@coll.count} records. Here they are:"
-@coll.find.each { |doc| puts doc.inspect }
+  def all_records
+    puts "There are #{@coll.count} records. Here they are:"
+    @coll.find.each { |doc| puts doc.inspect }
+  end
+end
