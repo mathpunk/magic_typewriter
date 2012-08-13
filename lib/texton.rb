@@ -22,15 +22,20 @@ class Texton < String
     # a variant algorithm. 
 
     results = []
-    self.send(method.to_sym, @@sigils[sigil.to_sym]) do |found|
-      results += found
+    if method == "split"
+      self.split_variant method, message
+    else
+      self.send(method.to_sym, @@sigils[sigil.to_sym]) do |found|
+        results += found
+      end
+      results
     end
-    results
   end
 
   def split_variant method, message
     puts "Yes, the split variant has been called"
-    self.send(method.to_sym, @@sigils[sigil.to_sym]) 
+    # Things that do not work
+    # self.send(method.to_sym, @@sigils[sigil.to_sym]) 
   end
 
 
