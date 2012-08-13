@@ -7,3 +7,11 @@
 [[stacks]]
 [[vim errors]]
 [[wiki behavior]]
+
+[[journal]]
+
+
+== Pattern Matching ==
+
+==
+

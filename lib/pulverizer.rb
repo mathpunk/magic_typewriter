@@ -1,23 +1,19 @@
-class Texton < String
+require_relative 'texton' 
 
-  rubble = {magic: /{{(.*?)}}/m, journal: /\(\((.*?)\)\)/m, pages: /\[\[(.*?)\]\]/m }
+class Pulverizer
+  attr_reader :magic, :journal, :pages
 
-  rubble.each_entry do |cantrip, incantation|
-    define_method("invoke_#{cantrip}".to_sym) do 
-      textons = []
-      self.scan(incantation) do |words|
-        textons += words
-      end
-    textons
-    end
+  # Given a filename, pulverizer opens it into a string, and rips it into any
+  # subtextons it may contain. 
+  #
+  # This all works. But it seems like it's not solving any problems. 
+  
+  def initialize(filename)
+    @filename = filename
+    @string = File.open(filename).read()
+    @texton = Texton.new(@string)
+    @magic = @texton.invoke_magic
+    @journal = @texton.invoke_journal
+    @pages = @texton.invoke_pages
   end
-end
-
-module Config
-  HOST = "wry.23q.org"
-  PORT = 27017
-  COLLECTION = "snow"
-end
-
-module Mongoing
 end
