@@ -12,6 +12,7 @@ class Texton < String
              }                                                                        
 
   def method_missing (method_name, &block)
+    puts "Using method missing on \"#{method_name}\""
     message = method_name.to_s.split('_')
     method = message.shift
     # This method expects only one sigil word; it could be improved with an
@@ -34,6 +35,7 @@ class Texton < String
 
   def split_variant method, message
     puts "Yes, the split variant has been called"
+    puts "the method is \"#{method}\" and the message is \"#{message}\""
     # Things that do not work
     # self.send(method.to_sym, @@sigils[sigil.to_sym]) 
   end
