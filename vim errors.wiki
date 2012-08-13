@@ -1,3 +1,0 @@
-Buffers aren't working like I'd expect -- I tried to move some text using "a and
-"A and in buffer 'a' was crap from many days ago. 
-

@@ -1,4 +1,0 @@
-There's a ... see, if this were a real magic typewriter, i could have scribbled
-on a card, taken a picture, drop-boxed it to the cursor. Anyway, Wordvector +
-Wordvector links them at their ends, and Wordvector * Wordvector creates a
-Wordmatrix, which is, I s'pose, a web-editable grid of text boxes?
