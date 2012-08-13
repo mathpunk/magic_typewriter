@@ -18,29 +18,21 @@ class Texton < String
     # iterator 
     sigil = message.shift
 
-    # Things that don't work:
-    # --------------------------------------------------- 
-    # self.send(method.to_sym, @@sigils[sigil.to_sym], &block)
-    # It is the closest to working, but it gives an array of arrays instead of
-    # an array.
-    # 
-    # self.send(method.to_sym, @@sigils[sigil.to_sym], &block).flatten
-    # --> flatten is somehow a method missing, in THIS class. Which I guess
-    # means that I'm not sending the message to an array -- which means,
-    # perhaps, I'm misunderstanding a binding/sending/ordering problem. 
-    #
-    # results = []
-    # self.send(method.to_sym, @@sigils[sigil.to_sym], &block) do |found|
-    #   results += found
-    # end
+    # scans are working, splits aren't -- I'm intercepting split calls to run
+    # a variant algorithm. 
 
     results = []
     self.send(method.to_sym, @@sigils[sigil.to_sym]) do |found|
       results += found
     end
     results
-
   end
+
+  def split_variant method, message
+    puts "Yes, the split variant has been called"
+    self.send(method.to_sym, @@sigils[sigil.to_sym]) 
+  end
+
 
 end
 
