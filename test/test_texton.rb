@@ -8,15 +8,14 @@ class TestTexton < Test::Unit::TestCase
   def setup
     @texton = Texton.new(File.open(BASE+"test/texton.txt").read())
     @plain_texton = Texton.new("Nothing fancy in here.")
-    @paragraph_texton = Texton.new("This is the first paragraph.
-
-This is the second.")
+    @paragraph_texton = Texton.new("This is the first paragraph.\n\nThis is the second.")
     @torn_texton = Texton.new("Man this is fun.\n---\nI'm so alone...")
     @dramatic_texton = Texton.new("I have** wait for it** an idea...\n***\n\nYeah, it's gone.")
   end
 
-  # REFACTOR IDEA: Note that you could do a bunch of "define_methods" on these
-  # guys, for each kv-pair in your sigils dictionary. It might even work. 
+  # FUTURE REFACTORING: Do you think it would work to use :define_method on
+  # these repetitive test methods? Or does TestCase expect to see them already
+  # written, so as to know to run the tests?
 
   def test_scan_magic
     assert_equal ["please", "thank you"], @texton.scan_magic
@@ -38,6 +37,8 @@ This is the second.")
     assert_equal ["hashtags", "foo", "bar"], text.scan_tags
   end
 
+  # Something is wrong with this test -- it passes, but direct testing does not
+  # recognize a "second" paragraph.
   def test_split_paragraphs
     assert_equal ["This is the first paragraph." ,"This is the second."], @paragraph_texton.split_paragraphs
   end
