@@ -1,7 +1,10 @@
 module MagicTypewriter
 
+  CORPUS = "../corpus"
+
   module TerministicEdition
   end
+
   module CombinatorialPunctuator
     # no bracket variation
     # bracket variation
