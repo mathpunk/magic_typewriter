@@ -1,45 +1,29 @@
-class String
-  def fulltext
-    self
-  end
-end
-
 class Texton < String
 
-  rubble = {magic: /{{(.*?)}}/m, journal: /\(\((.*?)\)\)/m, pages: /\[\[(.*?)\]\]/m }
 
-  rubble.each_entry do |cantrip, incantation|
-    define_method("invoke_#{cantrip}".to_sym) do 
-      textons = []
-      self.scan(incantation) do |words|
-        textons += words
-      end
-    textons
-    end
+  @@sigils = { magic: /{{(.*?)}}/m, 
+               journal: /\(\((.*?)\)\)/m, 
+               pages: /\[\[(.*?)\]\]/m,
+               tags: /\#(\w+)/, 
+               paragraphs: /\n\n+/, 
+               tears: /^---$/, 
+               ideas: /^\*{3,}$/, 
+               beats: /\*{2,}/ 
+             }                                                                        
+  def method_missing (method_name, &block)
+    message = method_name.to_s.split('_')
+    method = message.shift
+    # This method expects only one sigil word; it could be improved with an
+    # iterator 
+    sigil = message.shift
+    self.send(method.to_sym, @@sigils[sigil.to_sym], &block)
   end
+
 end
 
-# Po the cantrips have a name, a pattern, and the symbol :split or :scan.
-# Po cantrips take a code block to decide what to do with their information
-# e.g., 
-#   {{ paragraph.each {|p| bold p} }}
-
-text = Texton.new("This is a paragraph with no hashtags.
-
-This is a paragraph with #one hashtag. 
-
-This is a #paragraph with #two hashtags. 
-
-This has #two hashtags #too.")
-
-class Texton
-  def hashes
-    hashtag = /\#([^\s]+)/
-    self.scan hashtag
-  end
-
-  def paragraphs
-    paragraph = "\n\n" 
-    self.split paragraph
-  end
-end
+text = Texton.new("This is a thing **that has a #tag in it **but also [[a page of some kind]]. 
+                  
+                  And then, a paragraph.")
+puts text.scan_pages
+puts text.scan_tags
+puts text.split_paragraphs
