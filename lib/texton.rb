@@ -40,20 +40,3 @@ class Texton < String
   end
 end
 
-text = Texton.new("This is a thing **that has a #tag in it **but also [[a page of some kind]]. 
-                  
-                  And then, a paragraph.")
-
-puts "scan pages:"
-puts text.scan_pages
-
-puts "\nscan tags:"
-puts text.scan_tags
-
-# This test isn't written right.
-puts "\nscan paragraphs:"
-text.split_paragraphs.each_with_index { |graf, index| puts "paragraph #{index+1}: #{graf}"}
-
-# This test may not be written right.
-puts "\nscan beats:"
-text.split_beats.each_with_index { |graf, index| puts "beat #{index+1}: #{graf}"}

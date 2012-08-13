@@ -37,8 +37,6 @@ class TestTexton < Test::Unit::TestCase
     assert_equal ["hashtags", "foo", "bar"], text.scan_tags
   end
 
-  # Something is wrong with this test -- it passes, but direct testing does not
-  # recognize a "second" paragraph.
   def test_split_paragraphs
     assert_equal ["This is the first paragraph." ,"This is the second."], @paragraph_texton.split_paragraphs
   end
