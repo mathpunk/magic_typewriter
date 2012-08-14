@@ -32,13 +32,15 @@ class Texton < String
     end
   end
 
-  # If there's to be a default "invoke" algorithm...
+  # Default "invoker" methods (no functionality to speak of)
   @@sigils.each_entry do |name, pattern|
     define_method("invoke_#{name}".to_sym) do 
       puts "Invokus #{name}us!"
     end
   end
 
+  # Invoker stubs. These look like they'll be solvable with blocks, and then
+  # end up refactored with the block-using methods above.
   def invoke_journal
     # texton's text, minus journal entries
   end
@@ -56,6 +58,5 @@ class Texton < String
     # don't forget to add the pattern
     # transform the text's appearance, for Author or Reader
   end
-
 
 end
