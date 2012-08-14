@@ -1,6 +1,5 @@
 class Texton < String
 
-
   # Patterns textons know about
   @@sigils = { magic: /{{(.*?)}}/m, 
                instructions: /<<(.*?)\>>/m, 
@@ -12,11 +11,6 @@ class Texton < String
                ideas: /^\*{3,}$/, 
                beats: /\*{2,}/ 
              }                                                                        
-
-  # Database methods
-  # ????????????????
-  # Initial idea: Write a separate mongomapper module, which you can include and
-  # just do something like "self.save/update/whatever".  
 
   # Scan methods
   @@sigils.each_entry do |name, pattern|
