@@ -16,23 +16,23 @@ end
 # Documents and Connectors?
 # What's the pattern here?
 
-class Corpus
-  # get an array of files from the CORPUS
-  # every file's filename is a title
-  # every file's text is text
-end
-
-class Document
+class MongoTexton < Texton
   include MongoMapper::Document
   
   key :title, String
   key :fulltext, String
   key :tags, Array
-
-  # title = use the filename
-  # text = read the file
-  # tags = an array of tags
 end 
+
+class Corpus
+  @@dir = Configuration::CORPUS_DIR 
+
+  def initialize
+  # get an array of files from the CORPUS
+  # every file's filename is a title
+  # every file's text is text
+  end
+end
 
 class Mapper
   def initialize
@@ -50,3 +50,7 @@ class Mapper
     @coll.find.each { |doc| puts doc.inspect }
   end
 end
+
+teston = MongoTexton.new
+teston.title = "foo"
+teston.text = "text text #text ((thoughtful text)) text"
