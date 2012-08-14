@@ -1,4 +1,5 @@
 require_relative 'textino'
+
 module Configuration
   CORPUS_DIR = './corpus'
 end

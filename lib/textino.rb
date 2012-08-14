@@ -5,10 +5,8 @@ require_relative 'texton'
 # =================================================== 
 module Configuration
   HOST = "wry.23q.org"
-  PORT = 27017
   DATABASE = "test-mt"
-  # COLLECTION = ""
-  CORPUS_DIR = "/home/thomas/lab/magic_typewriter/corpus"
+  CORPUS = "/home/thomas/lab/magic_typewriter/corpus"
 end
 # =================================================== 
 
@@ -26,17 +24,41 @@ class Textino
   # many :subtextons
 end 
 
-=begin
-messages = ["First message", "Second message", "This supports #tags if all's going well.", "Next up: interating through a corpus directory."]
-messages.each_with_index do |msg,k|
-  message = Texton.new(msg)
-  emitted = Textino.new
-  emitted.name = "Untitled #{k+1}"
-  emitted.body = message
-  emitted.tags = message.scan_tags
-  emitted.save
+class Accelerator
+  @@dir = Configuration::CORPUS
+
+  def welcome
+    messages = ["First message", "Second message", 
+                "This supports #tags if all's going well.",
+                "Stand by..."] 
+
+    messages.each_with_index do |msg,k|
+      message = Texton.new(msg)
+      emitted = Textino.new
+      emitted.name = "Untitled #{k+1}"
+      emitted.body = message
+      emitted.tags = message.scan_tags
+      emitted.save
+    end
+  end
+
+  def accelerate_file(filename)
+    textino = Textino.new
+    textino.name = filename
+    textino.body = Texton.new(File.open(filename).read)
+    textino.save
+  end
+
+  def accelerate_dir(dir=@@dir)
+    Dir[dir+"/*.wiki"].each do |file|
+      self.accelerate_file file
+    end
+  end
 end
 
-all = Textino.all
-puts all.inspect
-=end
+# Populating a new database...
+# accelerator = Accelerator.new
+# accelerator.welcome
+# accelerator.accelerate_dir
+
+class Reader; end
