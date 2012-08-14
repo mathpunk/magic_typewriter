@@ -11,6 +11,7 @@ class TestTexton < Test::Unit::TestCase
     @paragraph_texton = Texton.new("This is the first paragraph.\n\nThis is the second.")
     @torn_texton = Texton.new("Man this is fun.\n---\nI'm so alone...")
     @dramatic_texton = Texton.new("I have** wait for it** an idea...\n***\n\nYeah, it's gone.")
+    @exercise_texton  = Texton.new("Think about this: <<your doom>>.")
   end
 
   # FUTURE REFACTORING: Do you think it would work to use :define_method on
@@ -30,6 +31,12 @@ class TestTexton < Test::Unit::TestCase
   def test_scan_pages
     assert_equal ["documents", "pages"], @texton.scan_pages 
     assert_equal ([] or nil), @plain_texton.scan_pages
+  end
+
+  def test_scan_instructions
+    assert_equal ["your doom"], @exercise_texton.scan_instructions
+    assert_equal ([] or nil), @plain_texton.scan_instructions
+
   end
 
   def test_scan_tags
