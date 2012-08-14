@@ -1,23 +1,26 @@
-class Corpus
-
-  # get an array of files from the CORPUS
-  # every file's filename is a title
-  # every file's text is text
-  
-  def initialize
-    @dir = Configuration::CORPUS_DIR 
-    @conn = Mongo::Connection.new(Configuration::HOST, Configuration::PORT)
-    @db   = @conn[Configuration::DATABASE]
-    @coll = @db[Configuration::COLLECTION]
-  end
-
-  def add_record(thing)
-    @coll.insert(thing)
-  end
-
-  def all_records
-    puts "There are #{@coll.count} records. Here they are:"
-    @coll.find.each { |doc| puts doc.inspect }
-  end
+require_relative 'textino'
+module Configuration
+  CORPUS_DIR = './corpus'
 end
 
+class Corpus 
+  @@dir = Configuration::CORPUS_DIR
+
+  def first_commit
+    self.files do |file|
+      t = Textino.new
+      t.name = file
+      t.save
+    end
+  end
+
+  def files
+    Dir["#{@@dir}/*.wiki"].each do |file|
+      puts file
+    end
+  end
+
+end
+
+corpus = Corpus.new
+corpus.first_commit
