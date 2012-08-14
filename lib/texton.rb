@@ -32,31 +32,27 @@ class Texton < String
     end
   end
 
-  # Default "invoker" methods (no functionality to speak of)
-  @@sigils.each_entry do |name, pattern|
-    define_method("invoke_#{name}".to_sym) do 
-      puts "Invokus #{name}us!"
-    end
+  # Transmute methods
+  #   These look like maybe they could be done using one of the methods above,
+  #   but yielding to a block to work with. 
+
+  def transmute_journal
+    # the texton's text, minus journal entries
   end
 
-  # Invoker stubs. These look like they'll be solvable with blocks, and then
-  # end up refactored with the block-using methods above.
-  def invoke_journal
-    # texton's text, minus journal entries
+  def transmute_magic
+    # the texton's text, with magic replaced by its return value(?). 
+    # WARNING: Can this result in dangerous stupidity?
   end
 
-  def invoke_magic
-    # texton's text, with magic replaced by its return value(?). 
+  def transmute_instructions
+    # the texton's text, with instructions appearing, but transformed;
+    # perhaps with the right editing, the Author can clear it for transmission to Readers
   end
 
+  # Invoke methods
   def invoke_pages
     # something useable in a cluster diagram of your pages, maybe.
-    # or, yielding to a block
-  end
-
-  def invoke_instructions
-    # don't forget to add the pattern
-    # transform the text's appearance, for Author or Reader
   end
 
 end
