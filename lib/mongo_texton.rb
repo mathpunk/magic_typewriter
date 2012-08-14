@@ -12,29 +12,7 @@ module Configuration
 end
 # =================================================== 
 
-# Textons and Textinos?
-# Documents and Connectors?
-# What's the pattern here?
-
-class MongoTexton < Texton
-  include MongoMapper::Document
-  
-  key :title, String
-  key :fulltext, String
-  key :tags, Array
-end 
-
-class Corpus
-  @@dir = Configuration::CORPUS_DIR 
-
-  def initialize
-  # get an array of files from the CORPUS
-  # every file's filename is a title
-  # every file's text is text
-  end
-end
-
-class Mapper
+class LargeTextonCollider
   def initialize
     @conn = Mongo::Connection.new(Configuration::HOST, Configuration::PORT)
     @db   = @conn[Configuration::DATABASE]
@@ -51,6 +29,56 @@ class Mapper
   end
 end
 
-teston = MongoTexton.new
-teston.title = "foo"
-teston.text = "text text #text ((thoughtful text)) text"
+@conn = Mongo::Connection.new
+@db   = @conn['sample-db']
+@coll = @db['test']
+
+@coll.remove
+3.times do |i|
+    @coll.insert({'a' => i+1})
+end
+
+puts "There are #{@coll.count} records. Here they are:"
+@coll.find.each { |doc| puts doc.inspect }
+
+class Texton
+  include MongoMapper::Document
+  key :title, String
+  key :body, String
+  key :tags, Array
+  many :subtextons
+  timestamps!
+end 
+
+class Subtexton
+  include MongoMapper::EmbeddedDocument
+  key :cantrip, String
+  key :body, String
+end
+
+class Corpus
+
+  # get an array of files from the CORPUS
+  # every file's filename is a title
+  # every file's text is text
+  
+  def initialize
+    @dir = Configuration::CORPUS_DIR 
+    @conn = Mongo::Connection.new(Configuration::HOST, Configuration::PORT)
+    @db   = @conn[Configuration::DATABASE]
+    @coll = @db[Configuration::COLLECTION]
+  end
+
+  def add_record(thing)
+    @coll.insert(thing)
+  end
+
+  def all_records
+    puts "There are #{@coll.count} records. Here they are:"
+    @coll.find.each { |doc| puts doc.inspect }
+  end
+end
+
+
+collider = LargeTextonCollider.new
+
