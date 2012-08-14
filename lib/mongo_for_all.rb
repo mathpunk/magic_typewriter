@@ -6,8 +6,8 @@ require_relative 'texton'
 module Configuration
   HOST = "wry.23q.org"
   PORT = 27017
-  DATABASE = "delete_meh"
-  COLLECTION = "textino2"
+  DATABASE = "confusing"
+  # COLLECTION = ""
   CORPUS_DIR = "/home/thomas/lab/magic_typewriter/corpus"
 end
 # =================================================== 
@@ -26,16 +26,11 @@ class Textino
   # many :subtextons
 end 
 
-some_text = Texton.new("Let's do this\n---\n\nuh huh\n---\n\nall right").split_tears.each_with_index do |line, k|
-# array = some_text.split_tears
-# a.each do |line|
-  signal = Textino.new
-  # signal.name = "number #{k}"
-  signal.name = "this textino"
-  signal.body = line
-  signal.save
-end
+t = Texton.new("fooooooooooooooo")
+emitted = Textino.new
+emitted.name = "Bologna"
+emitted.body = t
+emitted.save
 
-all_textinos = Textino.all
-puts all_textinos.map { |object| object.name }.inspect
-
+all = Textino.all
+puts all.inspect
