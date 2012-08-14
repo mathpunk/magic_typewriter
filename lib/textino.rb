@@ -1,46 +1,42 @@
-require 'mongo' 
+require 'mongo'
 require 'mongo_mapper'
 require_relative 'texton'
 
+# =================================================== 
 module Configuration
   HOST = "wry.23q.org"
   PORT = 27017
-  DATABASE = "subrosa"
-  COLLECTION = "snowdrift"
+  DATABASE = "test-mt"
+  # COLLECTION = ""
+  CORPUS_DIR = "/home/thomas/lab/magic_typewriter/corpus"
 end
+# =================================================== 
 
-class Textino       # the image of a texton
+class Textino
   include MongoMapper::Document
+  connection Mongo::Connection.new(Configuration::HOST)
+  set_database_name Configuration::DATABASE
 
-  key :title, String
-  key :fulltext, String
-  key :magic, Array
-  key :journal, Array
-  key :pages, Array
-
-end
-
-class Antitextino < Textino
-  # The diff between a new Textino and its previous Textino
-end
-
+  # key :text_id, ObjectID
+  key :name, String#, :required => true
+  key :body, Texton
+  key :tags, Array
+  # timestamps!
+  # key :date, Time
+  # many :subtextons
+end 
 
 =begin
-simple_textino = Textino.create( {
-  title: "Simple testino",
-  fulltext: "This is my text. Nothing fancy.",
-  magic: [],
-  pages: [],
-  journal: []
-})
+messages = ["First message", "Second message", "This supports #tags if all's going well.", "Next up: interating through a corpus directory."]
+messages.each_with_index do |msg,k|
+  message = Texton.new(msg)
+  emitted = Textino.new
+  emitted.name = "Untitled #{k+1}"
+  emitted.body = message
+  emitted.tags = message.scan_tags
+  emitted.save
+end
 
-simple_textino.save
-
-
-texton = Texton.new("This is my text. I have {{magic words}}, a ((journal entry)), and [[some pages i wrote]].")
-
-real_textino = Textino.create({
-  title: "Complex testino",
-  fulltext: texton
-})
+all = Textino.all
+puts all.inspect
 =end
