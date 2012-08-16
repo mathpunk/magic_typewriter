@@ -1,3 +1,4 @@
+# ALL COPIED TO TEXTON - REPLACE WITH VERSION CONTROL CODE
 require 'mongo'
 require 'mongo_mapper'
 require_relative 'texton'
