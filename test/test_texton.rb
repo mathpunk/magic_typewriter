@@ -36,7 +36,6 @@ class TestTexton < Test::Unit::TestCase
   def test_scan_instructions
     assert_equal ["your doom"], @exercise_texton.scan_instructions
     assert_equal ([] or nil), @plain_texton.scan_instructions
-
   end
 
   def test_scan_tags
@@ -58,8 +57,6 @@ class TestTexton < Test::Unit::TestCase
   end
 
   def test_split_beats
-    @dramatic_texton = ["I have", "wait for it", "an idea...", "***\n\nYeah, it's gone."], @dramatic_texton.split_beats
+    assert_equal ["I have", "wait for it", "an idea...", "Yeah, it's gone."], @dramatic_texton.split_beats
   end
-
 end
-
