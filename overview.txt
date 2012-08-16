@@ -1,0 +1,27 @@
+Some jerk writes a bunch of text. 
+  It is in a directory.
+  It is structured, but inconsistently.
+    There may be unknown sigils, symbols developed on the fly, attempts at
+invocations, such as tk or #( or what have you.
+
+XtremeVersionControl
+  I don't get it, but it's some sort of interaction between Textons and MongoDB
+and vim's actions on the filesystem. If I can do it without breaking anything,
+I'll pull the code from "Textino" into Textons, and save the super-fun
+Textino/Antitextino wording for this part of the project.
+
+A query -- quite likely a chain of them, perhaps in a block -- is strung
+together and sent to a collection of Textons (which might inherently be a
+Scripton; you might want to include Enumerable, and implement .each by having it
+act on an @Array. 
+
+A completed query generates:
+  A Summary
+    So that you know if this scripton is just too big to work with -- hm, so
+you're saying Summary matters more for the Author? Perhaps there could also be
+an ObscuredSummary, for the Readers to navigate. 
+  A Scripton
+    There's sort of a 'trivial scripton' by concatenating everything, in the
+order you've got it. There's permuting. There's sorting by fields. 
+
+  I guess I'm saying, the block/function dividing line is not so clear. 
