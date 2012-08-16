@@ -1,4 +1,3 @@
-# ALL COPIED TO TEXTON - REPLACE WITH VERSION CONTROL CODE
 require 'mongo'
 require 'mongo_mapper'
 require_relative 'texton'
@@ -58,8 +57,6 @@ class Accelerator
 end
 
 # Populating a new database...
-# accelerator = Accelerator.new
-# accelerator.welcome
-# accelerator.accelerate_dir
-
-class Reader; end
+accelerator = Accelerator.new
+accelerator.welcome
+accelerator.accelerate_dir
