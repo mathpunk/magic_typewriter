@@ -1,3 +1,10 @@
+NEXT:
+I don't know what tests to write now. I'm not sure how to test against a
+database.
+
+
+
+
 Some jerk writes a bunch of text. 
   It is in a directory.
   It is structured, but inconsistently.
