@@ -25,6 +25,13 @@ class Scripton
     # open the temp file in vim
     # on saving, the string is a new texton, which knows what textons it came
     # out of. 
+    @textons.inject(Texton.new(""), :+) do |accumulator, texton|
+      # texton + Texton.(" ")
+      # texton + " "
+      # texton = texton + " "
+      texton = texton + Texton.new(" ")
+    end
+
   end
 
   def query &block

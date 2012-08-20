@@ -1,5 +1,0 @@
-# config/database.yml
-mongodb:
-  hostname: wry.23q.org
-  database: mm_testing
-  port: 27017

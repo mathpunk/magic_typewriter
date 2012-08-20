@@ -1,8 +1,0 @@
-{ 
-  title: "a test document",
-  description: "a hash to put into our database",
-  metadata:
-    { when: "8 August 2012",
-      where: "Sitting on the couch",
-      how: "Typed by hand into ./test/doc.hash" }
-}
