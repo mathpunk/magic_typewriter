@@ -14,7 +14,8 @@ class Texton < String
                paragraphs: /\n\n+/, 
                tears: /^---$/, 
                ideas: /^\*{3,}$/, 
-               beats: /\*{2,}/ 
+               beats: /\*{2,}/,
+               associations: /(.*)? -> (.*)?$/
              }                                                                        
 
   # Scan methods
@@ -27,6 +28,7 @@ class Texton < String
     textons
   end
   end
+
 
   # Split methods
   @@sigils.each_entry do |name, pattern|

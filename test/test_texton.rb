@@ -12,6 +12,7 @@ class TestTexton < Test::Unit::TestCase
     @torn_texton = Texton.new("Man this is fun.\n---\nI'm so alone...")
     @dramatic_texton = Texton.new("I have** wait for it** an idea...\n***\n\nYeah, it's gone.")
     @exercise_texton  = Texton.new("Think about this: <<your doom>>.")
+    @assoc_texton = Texton.new("i like -> pants\nsneakers -> shoes -> apparel")
   end
 
   # FUTURE REFACTORING: Do you think it would work to use :define_method on
@@ -42,6 +43,12 @@ class TestTexton < Test::Unit::TestCase
     text = Texton.new("This has #hashtags in it, such as #foo and #bar.")
     assert_equal ["hashtags", "foo", "bar"], text.scan_tags
   end
+
+  def test_scan_associations
+    # associations = /(.*)?->(.*)?$/
+    assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_texton.scan_associations
+  end
+
 
   def test_split_paragraphs
     assert_equal ["This is the first paragraph." ,"This is the second."], @paragraph_texton.split_paragraphs
