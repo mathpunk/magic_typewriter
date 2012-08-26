@@ -1,0 +1,9 @@
+# a spike is a list of patterns
+spike:
+  chapter1:
+    - big\s?picture
+    - math(s|ematics)?
+    - punk(\s?rock|\s?as\s?fuck)?
+  appendix:
+    - algebraic whatever
+

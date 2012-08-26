@@ -1,0 +1,9 @@
+magic: /{{(.*?)}}/m 
+instructions: /<<(.*?)\>>/m
+journal: /\(\((.*?)\)\)/m
+pages: /\[\[(.*?)\]\]/m
+tags: /\#(\w+)/
+paragraphs: /\n\n+/
+tears: /^---$/
+ideas: /^\*{3,}$/
+beats: /\*{2,}/ 
