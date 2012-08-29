@@ -1,17 +1,8 @@
-# UHHHHHHHHHHHHHHHHHH
-=begin
-
-What's the idea here? There's all these textons... somewhere... They get
-searched, and the result is a scripton, which can be searched just like the
-original set of textons. So are you saying that the db is itself a Scripton? By
-the ordering of the _ids?
-
-
-=end
-
-
-class Query
-end
+# Stub methods. I'm not entirely clear what a scripton 'is'. 
+# It should
+#   respond to texton methods, acting all enumerator-like;
+#   respond to searches or queries, perhaps by sorting by a block given;
+#   be editable into a new texton maybe? 
 
 class Scripton
   attr_reader :textons
@@ -34,8 +25,7 @@ class Scripton
 
   end
 
-  def query &block
+  def search &block
     Scripton.new(@textons.sort &block)
   end
-
 end
