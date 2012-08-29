@@ -29,3 +29,10 @@ corpus in order to search for several things in an ordered fashion.
 
 * test
 It has tests in it!
+
+Issues
+=================================================== 
+* Textons and ill-named textinos
+Textons ought to know about MongoDB, but as soon as I added the line to include
+MongoMapper::Document, tests started failing. Is it the way the textons in
+test_texton.rb are constructed? 
