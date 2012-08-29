@@ -26,33 +26,29 @@ class Texton
     @name = name
   end
 
+  # Sigil methods
   @@sigils = YAML.load(open('grimoire/sigils'))
-
-  # Scan methods
   @@sigils.each_entry do |name, description|
     pattern = description['pattern'].to_regexp
-    define_method("scan_#{name}".to_sym) do 
-      textons = []
-      @body.scan(pattern) {|items| textons += items}
-      textons
-    end
-  end
-
-  # Split methods
-  @@sigils.each_entry do |name, description|
-    pattern = description['pattern'].to_regexp
-    define_method("split_#{name}".to_sym) do 
-      @body.split(pattern).map {|x| x.strip}
-    end
-  end
-
-  # Chain methods
-  @@sigils.each_entry do |name, description|
-    pattern = description['pattern'].to_regexp
-    define_method("chain_#{name}".to_sym) do 
-      results = []
-      @body.lines {|line| results << line.split(pattern).each {|match| match.strip!}}
-      results
+    style = description['style']
+    if style == 'scan'
+      define_method("scan_#{name}".to_sym) do 
+        textons = []
+        @body.scan(pattern) {|items| textons += items}
+        textons
+      end
+    elsif style == 'split'
+      define_method("split_#{name}".to_sym) do 
+        @body.split(pattern).map {|x| x.strip}
+      end
+    elsif style == 'chain'
+      define_method("chain_#{name}".to_sym) do 
+        results = []
+        @body.lines {|line| results << line.split(pattern).each {|match| match.strip!}}
+        results
+      end
+    else
+      raise "Unknown style #{style} for sigil #{name}"
     end
   end
 
