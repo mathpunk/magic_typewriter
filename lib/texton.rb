@@ -43,8 +43,13 @@ class Texton < String
   def scan_associations
     associations = []
     pattern = @@sigils[:associations]
-    associations += self.scan(pattern)
+    self.lines do |line|
+      array = line.split(" -> ").each {|match| match.strip!}
+      associations << array
+    end
+    associations
   end
+
 
   # Transmute methods
   #   These look like maybe they could be done using one of the methods above,
