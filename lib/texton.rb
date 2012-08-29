@@ -2,6 +2,7 @@ require 'mongo'
 require 'mongo_mapper'
 require_relative '../config/config.rb'
 require 'yaml'
+require 'to_regexp'
 
 class Texton 
 
@@ -25,26 +26,11 @@ class Texton
     @name = name
   end
 
-  # Idea: Factor out the sigil hash into ../grimoire/sigils, with the user saying whether they're 
-  # split, scan, or chain patterns. 
-
   @@sigils = YAML.load(open('grimoire/sigils'))
 
-  @@sigils = { magic: /{{(.*?)}}/m, 
-               instructions: /<<(.*?)\>>/m, 
-               journal: /\(\((.*?)\)\)/m, 
-               pages: /\[\[(.*?)\]\]/m,
-               tags: /\#(\w+)/, 
-               paragraphs: /\n\n+/, 
-               tears: /^---$/, 
-               ideas: /^\*{3,}$/, 
-               beats: /\*{2,}/,
-               associations: /\s?->\s?/,
-               jumps: /\s?=>\s?/
-             }                                                                        
-
   # Scan methods
-  @@sigils.each_entry do |name, pattern|
+  @@sigils.each_entry do |name, description|
+    pattern = description['pattern'].to_regexp
     define_method("scan_#{name}".to_sym) do 
       textons = []
       @body.scan(pattern) {|items| textons += items}
@@ -52,18 +38,17 @@ class Texton
     end
   end
 
-  def define_scan(name, pattern)
-  end
-
   # Split methods
-  @@sigils.each_entry do |name, pattern|
+  @@sigils.each_entry do |name, description|
+    pattern = description['pattern'].to_regexp
     define_method("split_#{name}".to_sym) do 
-      @body.split(pattern).collect {|x| x.strip}
+      @body.split(pattern).map {|x| x.strip}
     end
   end
 
   # Chain methods
-  @@sigils.each_entry do |name, pattern|
+  @@sigils.each_entry do |name, description|
+    pattern = description['pattern'].to_regexp
     define_method("chain_#{name}".to_sym) do 
       results = []
       @body.lines {|line| results << line.split(pattern).each {|match| match.strip!}}
