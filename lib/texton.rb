@@ -6,7 +6,9 @@ require_relative '../config/config.rb'
 class Texton < String
 
   # Patterns textons know about. This really ought to be factored into
-  # configuration. 
+  # ../grimoire/sigils, perhaps with an extra symbol such that sigils know if
+  # they default to splitting or scanning or neither.  
+
   @@sigils = { magic: /{{(.*?)}}/m, 
                instructions: /<<(.*?)\>>/m, 
                journal: /\(\((.*?)\)\)/m, 
@@ -42,21 +44,31 @@ class Texton < String
   def associations
 
     # Associations need special handling because they may come in pairs or in
-    # chains, and I don't know the regex to handle such a thing. This means we
+    # chains, and I don't know if there is regex to handle such a thing. This means we
     # break the 'sigil' pattern, and do a regular method instead of a
     # define_method. 
     #
     # We assume that associations will be alone on their line. 
-    # 
-    # Later, consider creating a 'jump' method for chains of =>'s, if it's a
-    # sigil that you like. 
 
-    associations = []
+    results = []
     self.lines do |line|
-      array = line.split(/\s?->\s?/).each {|match| match.strip!} 
-      associations << array
+      results << line.split(/\s?->\s?/).each {|match| match.strip!}
     end
-    associations
+    results
   end
+
+  def jumps
+
+    # This is the associations method with -> replaced with =>. I am repeating
+    # myself except for a single character and the method name. Just how far is
+    # metaprogramming supposed to go? 
+
+    results = []
+    self.lines do |line|
+      results << line.split(/\s?=>\s?/).each {|match| match.strip!}
+    end
+    results
+  end
+
 
 end

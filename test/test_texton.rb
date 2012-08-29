@@ -22,6 +22,8 @@ class TestTexton < Test::Unit::TestCase
     @exercise_texton  = Texton.new("Think about this: <<your doom>>.")
     @assoc_pairs_texton = Texton.new("i like -> pants\nsneakers -> shoes")
     @assoc_chains_texton = Texton.new("i like -> pants\nsneakers -> shoes -> apparel")
+    @jump_pair_texton = Texton.new("ducks => rabbits")
+    @jump_chain_texton = Texton.new("ducks => rabbits => cheese toast")
   end
 
   # FUTURE REFACTORING: Do you think it would work to use :define_method on
@@ -58,6 +60,11 @@ class TestTexton < Test::Unit::TestCase
     assert_equal [["i like", "pants"], ["sneakers", "shoes"]], @assoc_pairs_texton.associations
     # associations in chains
     assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_chains_texton.associations
+  end
+
+  def test_jumps
+    assert_equal [["ducks", "rabbits"]], @jump_pair_texton.jumps
+    assert_equal [["ducks", "rabbits", "cheese toast"]], @jump_chain_texton.jumps
   end
 
   def test_split_paragraphs
