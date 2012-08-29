@@ -1,6 +1,5 @@
 require 'mongo'
 require 'mongo_mapper'
-require_relative 'texton'
 require_relative '../config/config.rb'
 
 class Texton < String
@@ -69,6 +68,5 @@ class Texton < String
     end
     results
   end
-
 
 end
