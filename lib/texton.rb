@@ -1,6 +1,7 @@
 require 'mongo'
 require 'mongo_mapper'
 require_relative '../config/config.rb'
+require 'yaml'
 
 class Texton 
 
@@ -24,9 +25,10 @@ class Texton
     @name = name
   end
 
-  # Patterns textons know about. This really ought to be factored into
-  # ../grimoire/sigils, perhaps with an extra symbol such that sigils know if
-  # they default to splitting or scanning or neither.  
+  # Idea: Factor out the sigil hash into ../grimoire/sigils, with the user saying whether they're 
+  # split, scan, or chain patterns. 
+
+  @@sigils = YAML.load(open('grimoire/sigils'))
 
   @@sigils = { magic: /{{(.*?)}}/m, 
                instructions: /<<(.*?)\>>/m, 
@@ -37,6 +39,8 @@ class Texton
                tears: /^---$/, 
                ideas: /^\*{3,}$/, 
                beats: /\*{2,}/,
+               associations: /\s?->\s?/,
+               jumps: /\s?=>\s?/
              }                                                                        
 
   # Scan methods
@@ -59,34 +63,15 @@ class Texton
     end
   end
 
-  # Special methods
-  def associations
-
-    # Associations need special handling because they may come in pairs or in
-    # chains, and I don't know if there is regex to handle such a thing. This means we
-    # break the 'sigil' pattern, and do a regular method instead of a
-    # define_method. 
-    #
-    # We assume that associations will be alone on their line. 
-
-    results = []
-    @body.lines do |line|
-      results << line.split(/\s?->\s?/).each {|match| match.strip!}
+  # Chain methods
+  @@sigils.each_entry do |name, pattern|
+    define_method("chain_#{name}".to_sym) do 
+      results = []
+      @body.lines do |line|
+        results << line.split(pattern).each {|match| match.strip!}
+      end
+      results
     end
-    results
-  end
-
-  def jumps
-    # This is the associations method with -> replaced with =>. I am repeating
-    # myself except for a single character and the method name.... perhaps this
-    # is an example of a "chain" method, and can be replaced by another
-    # define_method.  
-
-    results = []
-    @body.lines do |line|
-      results << line.split(/\s?=>\s?/).each {|match| match.strip!}
-    end
-    results
   end
 
   # Missing methods are sent to @body; presumably they are String or singleton

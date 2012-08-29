@@ -1,9 +1,43 @@
-magic: /{{(.*?)}}/m 
-instructions: /<<(.*?)\>>/m
-journal: /\(\((.*?)\)\)/m
-pages: /\[\[(.*?)\]\]/m
-tags: /\#(\w+)/
-paragraphs: /\n\n+/
-tears: /^---$/
-ideas: /^\*{3,}$/
-beats: /\*{2,}/ 
+magic: 
+  pattern: /{{(.*?)}}/m 
+  style: scan
+
+instructions: 
+  pattern: /<<(.*?)\>>/m
+  style: scan
+
+journal: 
+  pattern: /\(\((.*?)\)\)/m
+  style: scan
+
+pages: 
+  pattern: /\[\[(.*?)\]\]/m
+  style: scan
+
+tags: 
+  pattern: /\#(\w+)/
+  style: scan
+
+paragraphs: 
+  pattern: /\n\n+/
+  style: split
+
+tears: 
+  pattern: /^---$/
+  style: split
+
+ideas: 
+  pattern: /^\*{3,}$/
+  style: split
+
+beats: 
+  pattern: /\*{2,}/ 
+  style: split
+
+associations:
+  pattern: /\s?->\s?/
+  style: chain
+
+jumps:
+  pattern: /\s?=>\s?/
+  style: chain
