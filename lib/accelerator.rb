@@ -10,20 +10,6 @@ module Configuration
 end
 # =================================================== 
 
-class Textino
-  include MongoMapper::Document
-  connection Mongo::Connection.new(Configuration::HOST)
-  set_database_name Configuration::DATABASE
-
-  # key :text_id, ObjectID
-  key :name, String#, :required => true
-  key :body, Texton
-  key :tags, Array
-  # timestamps!
-  # key :date, Time
-  # many :subtextons
-end 
-
 class Accelerator
   @@dir = Configuration::CORPUS
 
@@ -33,20 +19,14 @@ class Accelerator
                 "Stand by..."] 
 
     messages.each_with_index do |msg,k|
-      message = Texton.new(msg)
-      emitted = Textino.new
-      emitted.name = "Untitled #{k+1}"
-      emitted.body = message
-      emitted.tags = message.scan_tags
-      emitted.save
+      message = Texton.new(msg, "Untitled #{k+1}")
+      message.save
     end
   end
 
   def accelerate_file(filename)
-    textino = Textino.new
-    textino.name = filename
-    textino.body = Texton.new(File.open(filename).read)
-    textino.save
+    texton = Texton.new(File.open(filename).read, filename)
+    texton.save
   end
 
   def accelerate_dir(dir=@@dir)
