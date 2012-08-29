@@ -2,7 +2,7 @@ require 'mongo'
 require 'mongo_mapper'
 require_relative '../config/config.rb'
 
-class Texton < String
+class Texton 
 
   include MongoMapper::Document
   connection Mongo::Connection.new(Configuration::HOST)
@@ -87,6 +87,15 @@ class Texton < String
       results << line.split(/\s?=>\s?/).each {|match| match.strip!}
     end
     results
+  end
+
+  def method_missing(message, *args)
+    # message = msg.to_sym
+    if @body.respond_to?(message)
+      return @body.send(message, *args) 
+    else
+      raise "Method #{message} missing in both #{self.inspect} and #{@body.inspect}"
+    end
   end
 
 end
