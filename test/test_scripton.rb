@@ -1,9 +1,9 @@
 require 'test/unit'
 require 'redgreen'
+require 'yaml'
 require_relative '../lib/texton.rb'
 require_relative '../lib/scripton.rb'
 
-BASE = "/home/thomas/lab/magic_typewriter/"
 
 class TestScripton < Test::Unit::TestCase
   def setup

@@ -1,12 +1,17 @@
 require 'test/unit'
 require 'redgreen'
+require 'yaml'
 require_relative '../lib/texton.rb'
 
-BASE = "/home/thomas/lab/magic_typewriter/"
+if not File.exists? 'pretend.cfg'
+  puts 'Need a config file - see pretend.cfg.sample'
+  Process.exit
+end
 
 class TestTexton < Test::Unit::TestCase
   def setup
-    @texton = Texton.new(File.open(BASE+"test/texton.txt").read())
+    @config = YAML.load(open('pretend.cfg'))
+    @texton = Texton.new(File.open(File.join(@config["baseDir"], "test", "texton.txt")).read())
     @plain_texton = Texton.new("Nothing fancy in here.")
     @paragraph_texton = Texton.new("This is the first paragraph.\n\nThis is the second.")
     @torn_texton = Texton.new("Man this is fun.\n---\nI'm so alone...")
