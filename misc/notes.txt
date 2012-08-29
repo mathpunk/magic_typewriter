@@ -1,0 +1,77 @@
+class AuthorScripton < Scripton
+  attr_accessor :stage
+end
+# The machine creates a scripton, hoping the author will enjoy the summary and edit it into a texton. 
+
+class ReaderScripton < Scripton
+  attr_accessor :stage
+end
+# The machine creates a scripton, and waits for the reader to click away or
+# click ahead, or fill out some sort of form or engage in some interaction. 
+
+---
+class Texton 
+  def method_missing(*args)
+    if block_given?
+      yield
+    end
+  end
+end
+# Code that won't work. 
+---
+
+= A framework of keywords =
+RUBRIC --
+  "following the medieval custom of writing key words in red in the margins of
+  important books."
+
+  Imagine: A DecoratedScripton has KeyWords, seemingly at random?, all out of
+  the WordVectors?, in the Margins.  WHen they are followed, they reveal an
+  DisturbingErrorMessage, followed by a DisturbingErrorHandler, followed by a
+  SubmissionForm. 
+  
+  I have this further fantasy that there are ImagesWithWords that are
+  interesting enough to clue the reader in that they are WordsToSearchFor. 
+  
+  WHen doing so, they should open up content with further secret messages. I had
+  this idea where a particular book has its ISBN pictured, and then pictures of
+  the words that I highlighted in them, only there's ALSO a secret word in the
+  bolded text. This is the text that I can communicate without fear of being
+  punished. This is probably the video text. It should be a cool easter egg that
+  tells the viewer, Hey cool you found this... you can go now and think about
+  it. 
+  
+  Or, to be less twee, it just opens up MoreCompletedContent, which is
+  guaranteed by mongodb to have been edited since the inception of the Magic
+  Typewriter. Perhaps you can 'like' the content, which has joke possibilities
+  or the possibility of fucking with Facebook. Facefreaking? 
+
+---
+magic_words << 'specialize', 'generalize'A
+specialize -> categorize
+WordOpEndsWith( takes two words and tries to identify their commonality... such
+as, ends with ize)
+
+
+  # Transmute methods
+  #   These look like maybe they could be done using one of the methods above,
+  #   but yielding to a block to work with. 
+
+  def transmute_journal
+    # the texton's text, minus journal entries
+  end
+
+  def transmute_magic
+    # the texton's text, with magic replaced by its return value(?). 
+    # WARNING: Can this result in dangerous stupidity?
+  end
+
+  def transmute_instructions
+    # the texton's text, with instructions appearing, but transformed;
+    # perhaps with the right editing, the Author can clear it for transmission to Readers
+  end
+
+  # Invoke methods
+  def invoke_pages
+    # something useable in a cluster diagram of your pages, maybe.
+  end
