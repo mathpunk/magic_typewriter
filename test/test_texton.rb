@@ -49,7 +49,7 @@ class TestTexton < Test::Unit::TestCase
     # associations in pairs
     assert_equal [["i like", "pants"], ["sneakers", "shoes"]], @assoc_pairs_texton.scan_associations
     # associations in chains
-    # assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_chains_texton.scan_associations
+    assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_chains_texton.scan_associations
   end
 
   def test_split_paragraphs
