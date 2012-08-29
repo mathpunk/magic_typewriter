@@ -23,65 +23,65 @@ class TestTexton < Test::Unit::TestCase
     @assoc_pairs_texton = Texton.new("i like -> pants\nsneakers -> shoes")
     @assoc_chains_texton = Texton.new("i like -> pants\nsneakers -> shoes -> apparel")
     @jump_pair_texton = Texton.new("ducks => rabbits")
-    @jump_chain_texton = Texton.new("ducks => rabbits => cheese toast")
+    @jump_chains_texton = Texton.new("ducks => rabbits => cheese toast")
   end
 
   # FUTURE REFACTORING: Do you think it would work to use :define_method on
   # these repetitive test methods? Or does TestCase expect to see them already
   # written, so as to know to run the tests?
 
-  def test_scan_magic
-    assert_equal ["please", "thank you"], @texton.scan_magic
-    assert_equal ([] or nil), @plain_texton.scan_magic
+  def test_magic
+    assert_equal ["please", "thank you"], @texton.magic
+    assert_equal ([] or nil), @plain_texton.magic
   end
 
-  def test_scan_journal
-    assert_equal ["thoughts", "feelings"], @texton.scan_journal
-    assert_equal ([] or nil), @plain_texton.scan_journal
+  def test_journal
+    assert_equal ["thoughts", "feelings"], @texton.journal
+    assert_equal ([] or nil), @plain_texton.journal
   end
 
-  def test_scan_pages
-    assert_equal ["documents", "pages"], @texton.scan_pages 
-    assert_equal ([] or nil), @plain_texton.scan_pages
+  def test_pages
+    assert_equal ["documents", "pages"], @texton.pages 
+    assert_equal ([] or nil), @plain_texton.pages
   end
 
-  def test_scan_instructions
-    assert_equal ["your doom"], @exercise_texton.scan_instructions
-    assert_equal ([] or nil), @plain_texton.scan_instructions
+  def test_instructions
+    assert_equal ["your doom"], @exercise_texton.instructions
+    assert_equal ([] or nil), @plain_texton.instructions
   end
 
-  def test_scan_tags
+  def test_tags
     text = Texton.new("This has #hashtags in it, such as #foo and #bar.")
-    assert_equal ["hashtags", "foo", "bar"], text.scan_tags
+    assert_equal ["hashtags", "foo", "bar"], text.tags
   end
 
-  def test_chain_associations
+  def test_associations
     # associations in pairs
-    assert_equal [["i like", "pants"], ["sneakers", "shoes"]], @assoc_pairs_texton.chain_associations
+    assert_equal [["i like", "pants"], ["sneakers", "shoes"]], @assoc_pairs_texton.associations
     # associations in chains
-    assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_chains_texton.chain_associations
+    assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_chains_texton.associations
   end
 
-  def test_chain_jumps
-    assert_equal [["ducks", "rabbits"]], @jump_pair_texton.chain_jumps
-    assert_equal [["ducks", "rabbits", "cheese toast"]], @jump_chain_texton.chain_jumps
+  def test_jumps
+    assert_equal [["ducks", "rabbits"]], @jump_pair_texton.jumps
+    assert_equal [["ducks", "rabbits", "cheese toast"]], @jump_chains_texton.jumps
   end
 
-  def test_split_paragraphs
-    assert_equal ["This is the first paragraph." ,"This is the second."], @paragraph_texton.split_paragraphs
+  def test_paragraphs
+    assert_equal ["This is the first paragraph." ,"This is the second."], @paragraph_texton.paragraphs
   end
 
-  def test_split_tears
-    assert_equal ["Man this is fun.", "I'm so alone..."], @torn_texton.split_tears
+  def test_tears
+    assert_equal ["Man this is fun.", "I'm so alone..."], @torn_texton.tears
     # test what happens when you give it a block
   end
 
-  def test_split_ideas
-    assert_equal  ["I have** wait for it** an idea...", "Yeah, it's gone."] , @dramatic_texton.split_ideas
+  def test_ideas
+    assert_equal  ["I have** wait for it** an idea...", "Yeah, it's gone."] , @dramatic_texton.ideas
   end
 
-  def test_split_beats
-    assert_equal ["I have", "wait for it", "an idea...", "Yeah, it's gone."], @dramatic_texton.split_beats
+  def test_beats
+    assert_equal ["I have", "wait for it", "an idea...", "Yeah, it's gone."], @dramatic_texton.beats
   end
 
   def test_method_missing  

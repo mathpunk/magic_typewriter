@@ -32,17 +32,17 @@ class Texton
     pattern = description['pattern'].to_regexp
     style = description['style']
     if style == 'scan'
-      define_method("scan_#{name}".to_sym) do 
+      define_method(name.to_sym) do 
         textons = []
         @body.scan(pattern) {|items| textons += items}
         textons
       end
     elsif style == 'split'
-      define_method("split_#{name}".to_sym) do 
+      define_method(name.to_sym) do 
         @body.split(pattern).map {|x| x.strip}
       end
     elsif style == 'chain'
-      define_method("chain_#{name}".to_sym) do 
+      define_method(name.to_sym) do 
         results = []
         @body.lines {|line| results << line.split(pattern).each {|match| match.strip!}}
         results
@@ -51,7 +51,6 @@ class Texton
       raise "Unknown style #{style} for sigil #{name}"
     end
   end
-
 
   # Missing methods are sent to @body; presumably they are String or singleton
   # messages. 
