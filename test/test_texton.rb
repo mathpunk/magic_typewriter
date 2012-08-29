@@ -53,11 +53,11 @@ class TestTexton < Test::Unit::TestCase
     assert_equal ["hashtags", "foo", "bar"], text.scan_tags
   end
 
-  def test_scan_associations
+  def test_associations
     # associations in pairs
-    assert_equal [["i like", "pants"], ["sneakers", "shoes"]], @assoc_pairs_texton.scan_associations
+    assert_equal [["i like", "pants"], ["sneakers", "shoes"]], @assoc_pairs_texton.associations
     # associations in chains
-    assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_chains_texton.scan_associations
+    assert_equal [["i like", "pants"], ["sneakers", "shoes", "apparel"]], @assoc_chains_texton.associations
   end
 
   def test_split_paragraphs

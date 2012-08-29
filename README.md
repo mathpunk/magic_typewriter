@@ -1,2 +1,2 @@
-magic_typewriter
+magic typewriter
 ================

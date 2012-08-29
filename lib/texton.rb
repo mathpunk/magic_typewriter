@@ -5,7 +5,8 @@ require_relative '../config/config.rb'
 
 class Texton < String
 
-  # Patterns textons know about
+  # Patterns textons know about. This really ought to be factored into
+  # configuration. 
   @@sigils = { magic: /{{(.*?)}}/m, 
                instructions: /<<(.*?)\>>/m, 
                journal: /\(\((.*?)\)\)/m, 
@@ -15,7 +16,6 @@ class Texton < String
                tears: /^---$/, 
                ideas: /^\*{3,}$/, 
                beats: /\*{2,}/,
-               associations: /(.*)? -> (.*)?$/
              }                                                                        
 
   # Scan methods
@@ -29,7 +29,6 @@ class Texton < String
   end
   end
 
-
   # Split methods
   @@sigils.each_entry do |name, pattern|
     define_method("split_#{name}".to_sym) do 
@@ -39,38 +38,25 @@ class Texton < String
     end
   end
 
-  # Special handling
-  def scan_associations
+  # Special methods
+  def associations
+
+    # Associations need special handling because they may come in pairs or in
+    # chains, and I don't know the regex to handle such a thing. This means we
+    # break the 'sigil' pattern, and do a regular method instead of a
+    # define_method. 
+    #
+    # We assume that associations will be alone on their line. 
+    # 
+    # Later, consider creating a 'jump' method for chains of =>'s, if it's a
+    # sigil that you like. 
+
     associations = []
-    pattern = @@sigils[:associations]
     self.lines do |line|
-      array = line.split(" -> ").each {|match| match.strip!}
+      array = line.split(/\s?->\s?/).each {|match| match.strip!} 
       associations << array
     end
     associations
   end
 
-
-  # Transmute methods
-  #   These look like maybe they could be done using one of the methods above,
-  #   but yielding to a block to work with. 
-
-  def transmute_journal
-    # the texton's text, minus journal entries
-  end
-
-  def transmute_magic
-    # the texton's text, with magic replaced by its return value(?). 
-    # WARNING: Can this result in dangerous stupidity?
-  end
-
-  def transmute_instructions
-    # the texton's text, with instructions appearing, but transformed;
-    # perhaps with the right editing, the Author can clear it for transmission to Readers
-  end
-
-  # Invoke methods
-  def invoke_pages
-    # something useable in a cluster diagram of your pages, maybe.
-  end
 end
