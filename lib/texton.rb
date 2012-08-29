@@ -43,9 +43,7 @@ class Texton < String
   def scan_associations
     associations = []
     pattern = @@sigils[:associations]
-    self.scan(pattern) do |items|
-      associations += Array.new(items[0], items[1])
-    end
+    associations += self.scan(pattern)
   end
 
   # Transmute methods
