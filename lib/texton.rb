@@ -4,6 +4,26 @@ require_relative '../config/config.rb'
 
 class Texton < String
 
+  include MongoMapper::Document
+  connection Mongo::Connection.new(Configuration::HOST)
+  set_database_name Configuration::DATABASE
+
+  # key :text_id, ObjectID
+  key :body, String, :required => true
+  key :name, String
+
+  timestamps!             # Are both these lines necessary?
+  key :date, Time         
+  # many :subtextons      # Neat that you can do 'many' but not sure this
+                          # belongs in our schema. 
+  # key :tags, Array      # I'm guessing we'll want tags/keywords saved for
+                          # search purposes. 
+
+  def initialize(string, name="")
+    @body = string
+    @name = name
+  end
+
   # Patterns textons know about. This really ought to be factored into
   # ../grimoire/sigils, perhaps with an extra symbol such that sigils know if
   # they default to splitting or scanning or neither.  
@@ -23,7 +43,7 @@ class Texton < String
   @@sigils.each_entry do |name, pattern|
     define_method("scan_#{name}".to_sym) do 
       textons = []
-      self.scan(pattern) do |items|
+      @body.scan(pattern) do |items|
       textons += items
     end
     textons
@@ -33,7 +53,7 @@ class Texton < String
   # Split methods
   @@sigils.each_entry do |name, pattern|
     define_method("split_#{name}".to_sym) do 
-      self.split(pattern).collect do |x| 
+      @body.split(pattern).collect do |x| 
         x.strip
       end
     end
@@ -50,7 +70,7 @@ class Texton < String
     # We assume that associations will be alone on their line. 
 
     results = []
-    self.lines do |line|
+    @body.lines do |line|
       results << line.split(/\s?->\s?/).each {|match| match.strip!}
     end
     results
@@ -63,7 +83,7 @@ class Texton < String
     # metaprogramming supposed to go? 
 
     results = []
-    self.lines do |line|
+    @body.lines do |line|
       results << line.split(/\s?=>\s?/).each {|match| match.strip!}
     end
     results
