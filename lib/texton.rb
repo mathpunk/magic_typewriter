@@ -77,10 +77,10 @@ class Texton
   end
 
   def jumps
-
     # This is the associations method with -> replaced with =>. I am repeating
-    # myself except for a single character and the method name. Just how far is
-    # metaprogramming supposed to go? 
+    # myself except for a single character and the method name.... perhaps this
+    # is an example of a "chain" method, and can be replaced by another
+    # define_method.  
 
     results = []
     @body.lines do |line|
@@ -89,8 +89,9 @@ class Texton
     results
   end
 
+  # Missing methods are sent to @body; presumably they are String or singleton
+  # messages. 
   def method_missing(message, *args)
-    # message = msg.to_sym
     if @body.respond_to?(message)
       return @body.send(message, *args) 
     else

@@ -84,7 +84,7 @@ class TestTexton < Test::Unit::TestCase
     assert_equal ["I have", "wait for it", "an idea...", "Yeah, it's gone."], @dramatic_texton.split_beats
   end
 
-  def test_method_missing    # 
+  def test_method_missing  
     hi = Texton.new("hello")
     assert_equal "Hello", hi.capitalize
     assert_equal 5, hi.length
