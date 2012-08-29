@@ -47,19 +47,18 @@ class Texton
   @@sigils.each_entry do |name, pattern|
     define_method("scan_#{name}".to_sym) do 
       textons = []
-      @body.scan(pattern) do |items|
-      textons += items
+      @body.scan(pattern) {|items| textons += items}
+      textons
     end
-    textons
   end
+
+  def define_scan(name, pattern)
   end
 
   # Split methods
   @@sigils.each_entry do |name, pattern|
     define_method("split_#{name}".to_sym) do 
-      @body.split(pattern).collect do |x| 
-        x.strip
-      end
+      @body.split(pattern).collect {|x| x.strip}
     end
   end
 
@@ -67,12 +66,11 @@ class Texton
   @@sigils.each_entry do |name, pattern|
     define_method("chain_#{name}".to_sym) do 
       results = []
-      @body.lines do |line|
-        results << line.split(pattern).each {|match| match.strip!}
-      end
+      @body.lines {|line| results << line.split(pattern).each {|match| match.strip!}}
       results
     end
   end
+
 
   # Missing methods are sent to @body; presumably they are String or singleton
   # messages. 
