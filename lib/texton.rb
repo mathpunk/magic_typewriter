@@ -44,15 +44,6 @@ class Texton < String
     associations = []
     pattern = @@sigils[:associations]
     self.lines do |line|
-      associations << line.scan(pattern).first
-    end
-    associations
-  end
-
-  def scan_associations
-    associations = []
-    pattern = @@sigils[:associations]
-    self.lines do |line|
       array = line.split(" -> ").each {|match| match.strip!}
       associations << array
     end
