@@ -21,3 +21,14 @@ bit with...
 corpus in order to search for several things in an ordered fashion. 
 
 * **test**. It has tests in it!
+
+Classes
+--------------------------------------------------- 
+* **texton**. The texton class reads sigil patterns in from ./grimoire/sigils,
+  and uses them to define methods that probe the internal structure of the
+  texton. It mixes in MongoMapper::Document, so textons should respond to a
+  'save' message. It also delegates messages it does not understand to its
+  @body, so that textons will do the expected thing when sent String methods (as
+  well as singleton methods named on @body).
+
+* **textino**. _Not implemented._ A 'diff' for a texton.
