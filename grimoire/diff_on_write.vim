@@ -1,5 +1,5 @@
-au BufWritePre *.wiki call DoStuff()
-function! DoStuff()
+au BufWritePre *.wiki call WriteDiff()
+function! WriteDiff()
     python << endpython
 import os
 import vim
