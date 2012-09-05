@@ -32,3 +32,8 @@ Classes
   well as singleton methods named on @body).
 
 * **textino**. _Not implemented._ A 'diff' for a texton.
+ 
+Issues
+======
+Can't test without an internet connection, because (I suppose) textons want to
+make a connection with the database before they start having tests run on them.
