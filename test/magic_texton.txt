@@ -6,10 +6,7 @@ stupid: yes
     - not interesting
 ready: no
 }}
-
-lol i'm a texton
-
+"lol i'm a texton"
 {{
-notes:
-  "I think I add yet another attribute to the texton?"
+notes: I think I add yet another attribute to the texton
 }}
