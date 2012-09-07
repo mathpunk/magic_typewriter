@@ -10,6 +10,8 @@ GEM
     ansi (1.4.3)
     autotest-standalone (4.5.9)
     bson (1.7.0)
+    bson_ext (1.7.0)
+      bson (~> 1.7.0)
     builder (3.0.2)
     i18n (0.6.1)
     mongo (1.7.0)
@@ -40,6 +42,7 @@ PLATFORMS
 
 DEPENDENCIES
   autotest-standalone
+  bson_ext
   mongo_mapper
   rack-test
   sinatra

@@ -1,4 +1,6 @@
 require 'test/unit'
+# require 'redgreen'
+require 'turn'
 require 'yaml'
 require_relative '../lib/texton.rb'
 
@@ -26,7 +28,7 @@ class TestTexton < Test::Unit::TestCase
     @assoc_chains_texton = Texton.new("i like -> pants\nsneakers -> shoes -> apparel")
     @jump_pair_texton = Texton.new("ducks => rabbits")
     @jump_chains_texton = Texton.new("ducks => rabbits => cheese toast")
-    @real_magic_texton = Texton.new(load_local_data "magic_texton.txt")
+    # @real_magic_texton = Texton.new(load_local_data "magic_texton.txt")
   end
 
   # FUTURE REFACTORING: Do you think it would work to use :define_method on
@@ -48,10 +50,12 @@ class TestTexton < Test::Unit::TestCase
     assert_equal ([] or nil), @plain_texton.pages
   end
 
+=begin
   def test_instructions
     assert_equal ["your doom"], @exercise_texton.instructions
     assert_equal ([] or nil), @plain_texton.instructions
   end
+=end
 
   def test_tags
     text = Texton.new("This has #hashtags in it, such as #foo and #bar.")

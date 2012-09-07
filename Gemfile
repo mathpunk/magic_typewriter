@@ -11,5 +11,6 @@ gem "to_regexp"
 
 gem 'autotest-standalone', :require => 'autotest'
 #gem 'autotest-rails-pure'
-gem 'turn'
+gem "bson_ext"
+gem "turn"
 gem "rack-test"
