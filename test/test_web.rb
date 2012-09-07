@@ -1,4 +1,4 @@
-require '../web/main'
+require_relative '../web/main'
 require 'test/unit'
 require 'rack/test'
 require 'turn'

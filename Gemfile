@@ -10,3 +10,4 @@ gem "mongo_mapper"
 gem "to_regexp"
 
 gem "turn"
+gem "rack-test"

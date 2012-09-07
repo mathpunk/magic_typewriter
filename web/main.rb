@@ -3,7 +3,7 @@ require 'bundler/setup'
 
 require 'sinatra'
 
-require '../lib/texton'
+require_relative '../lib/texton'
 
 get '/' do
   "o hai"
