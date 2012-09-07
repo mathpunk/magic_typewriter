@@ -1,5 +1,6 @@
 require 'test/unit'
-require 'redgreen'
+#require 'redgreen'
+require 'turn'
 require 'yaml'
 require_relative '../lib/texton.rb'
 
@@ -13,8 +14,7 @@ end
 class TestTexton < Test::Unit::TestCase
   def setup
     # @config = YAML.load(open('pretend.cfg'))
-    @config = { "baseDir" => "/home/thomas/lab/magic_typewriter" }
-    @texton = Texton.new(File.open(File.join(@config["baseDir"], "test", "texton.txt")).read())
+    @texton = Texton.new(File.open(File.join(File.expand_path(File.dirname(__FILE__)), "texton.txt")).read())
     @plain_texton = Texton.new("Nothing fancy in here.")
     @paragraph_texton = Texton.new("This is the first paragraph.\n\nThis is the second.")
     @torn_texton = Texton.new("Man this is fun.\n---\nI'm so alone...")
