@@ -24,6 +24,7 @@ class TestTexton < Test::Unit::TestCase
     @assoc_chains_texton = Texton.new("i like -> pants\nsneakers -> shoes -> apparel")
     @jump_pair_texton = Texton.new("ducks => rabbits")
     @jump_chains_texton = Texton.new("ducks => rabbits => cheese toast")
+    @real_magic_texton = Texton.new(File.join(@config["baseDir"], "test", "magic_texton.txt")).read())
   end
 
   # FUTURE REFACTORING: Do you think it would work to use :define_method on
