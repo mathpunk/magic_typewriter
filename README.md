@@ -36,4 +36,23 @@ Classes
 Issues
 ======
 Can't test without an internet connection, because (I suppose) textons want to
-make a connection with the database before they start having tests run on them.
+make a connection with the database before they start having tests run on them?
+
+
+Questionable Ideas
+=============================
+
+What's a page, anyway? 
+----------------------
+Dorian Taylor describes writing by alluding to unwritten concepts via
+[[wikiword]], and how that leads to an unmanageable workflow. 
+
+But suppose that missing pages complain to the author when they are read (or
+rather, failed to be read). Suppose that a page unpacks itself on the successive
+paragraph if an only if that page has not been read already; it does not appear
+in the scripton-so-far. Suppose that a page throws an exception to the reader
+when it fails, one which notifies the reader that there has been failure but
+also directs her to the wikipedia page on the topic. Or a picture of a bunny
+with a pancake on its head. Remember: throwing exceptions is how machines swear 
+(possibly with the Wordnik API helping us create good swears?)
+
