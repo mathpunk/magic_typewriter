@@ -1,0 +1,7 @@
+== Visual Text and Markup ==
+
+Surely we are not naive enough to think that the appearance of a text is not a crucial part of a text. Therefore, the CSS and HTML with which we deliver textons online ought not to live in Git alone, but be part of the textonic corpus. (JS is another matter, specifically a matter of security, if we ever move towards world-writeable textons. However we seem not to be for the moment, so maybe it can be in play too? Or maybe we're already pushing the boundaries of sanity.)
+
+We also want good defaults for each texton type, for authors who prefer not to deal with this.
+
+What are our preferences here? Does this live in the "magic" portion of a texton (which I don't fully understand)? Is it most sensibly done as a new bit of syntax?
