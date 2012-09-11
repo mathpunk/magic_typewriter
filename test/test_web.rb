@@ -12,10 +12,10 @@ class MagicTyWebTest < Test::Unit::TestCase
     Sinatra::Application
   end
 
-  def test_it_says_hi
+  def test_it_lists_textons
     get '/'
     assert last_response.ok?
-    assert_equal 'o hai', last_response.body
+    assert last_response.body.include? 'All textons'
   end
   
   #def test_it_says_hello_to_a_person
