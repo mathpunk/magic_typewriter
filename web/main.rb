@@ -5,6 +5,11 @@ require 'sinatra'
 
 require_relative '../lib/texton'
 
+set :views, settings.root + '/html'
+
+
 get '/' do
-  "o hai"
+  @all = Texton.all
+  @title = "All textons"
+  erb :all
 end
