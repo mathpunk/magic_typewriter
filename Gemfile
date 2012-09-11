@@ -9,5 +9,7 @@ gem "sinatra"
 gem "mongo_mapper"
 gem "to_regexp"
 
-gem "turn"
+gem 'autotest-standalone', :require => 'autotest'
+#gem 'autotest-rails-pure'
+gem 'turn'
 gem "rack-test"

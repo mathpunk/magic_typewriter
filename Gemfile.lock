@@ -8,6 +8,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     ansi (1.4.3)
+    autotest-standalone (4.5.9)
     bson (1.7.0)
     builder (3.0.2)
     i18n (0.6.1)
@@ -38,6 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest-standalone
   mongo_mapper
   rack-test
   sinatra

@@ -1,6 +1,4 @@
 require 'test/unit'
-#require 'redgreen'
-require 'turn'
 require 'yaml'
 require_relative '../lib/texton.rb'
 
@@ -12,9 +10,13 @@ end
 =end
 
 class TestTexton < Test::Unit::TestCase
+  def load_local_data(filenm)
+    File.open(File.join(File.expand_path(File.dirname(__FILE__)), filenm)).read()
+  end
+
   def setup
     # @config = YAML.load(open('pretend.cfg'))
-    @texton = Texton.new(File.open(File.join(File.expand_path(File.dirname(__FILE__)), "texton.txt")).read())
+    @texton = Texton.new(load_local_data "texton.txt")
     @plain_texton = Texton.new("Nothing fancy in here.")
     @paragraph_texton = Texton.new("This is the first paragraph.\n\nThis is the second.")
     @torn_texton = Texton.new("Man this is fun.\n---\nI'm so alone...")
@@ -24,7 +26,7 @@ class TestTexton < Test::Unit::TestCase
     @assoc_chains_texton = Texton.new("i like -> pants\nsneakers -> shoes -> apparel")
     @jump_pair_texton = Texton.new("ducks => rabbits")
     @jump_chains_texton = Texton.new("ducks => rabbits => cheese toast")
-    @real_magic_texton = Texton.new(File.join(@config["baseDir"], "test", "magic_texton.txt")).read())
+    @real_magic_texton = Texton.new(load_local_data "magic_texton.txt")
   end
 
   # FUTURE REFACTORING: Do you think it would work to use :define_method on
