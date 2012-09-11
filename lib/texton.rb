@@ -27,7 +27,7 @@ class Texton
   end
 
   # Sigil methods
-  @@sigils = YAML.load(open('grimoire/sigils'))
+  @@sigils = YAML.load(open(File.join(File.expand_path(File.dirname(__FILE__)), '../grimoire/sigils')))
   @@sigils.each_entry do |name, description|
     pattern = description['pattern'].to_regexp
     style = description['style']
