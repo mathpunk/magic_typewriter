@@ -19,14 +19,22 @@ get '/' do
   erb :all
 end
 
+get '/form' do
+  erb :form
+end
+
+post '/form' do
+  "You said '#{params[:message]}'"
+end
+
 post '/new' do 
-    o = JSON.parse(params[:content])
-    @@coll.insert(o)
-    "You said what? #{params[:content]}\n\nOkay"
+  o = JSON.parse(params[:content])
+  @@coll.insert(o)
+  "You said what? #{params[:content]}\n\nOkay"
 end
 
 get '/old' do
-    r = []
-    @@coll.find.each { |doc| r.append(doc.inspect)}
-    r.join('\n')
+  r = []
+  @@coll.find.each { |doc| r.append(doc.inspect)}
+  r.join('\n')
 end
