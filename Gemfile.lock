@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/mathpunk/rubylog.git
+  revision: c898cc3e8f7e4c3ea0df49e76948fcaae2b289e8
+  specs:
+    rubylog (0.0.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -47,6 +53,7 @@ DEPENDENCIES
   bson_ext
   mongo_mapper
   rack-test
+  rubylog!
   sinatra
   to_regexp
   turn
