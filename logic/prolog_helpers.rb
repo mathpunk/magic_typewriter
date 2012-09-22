@@ -1,1 +1,0 @@
-/home/thomas/lab/prolog/prolog_helpers.rb
